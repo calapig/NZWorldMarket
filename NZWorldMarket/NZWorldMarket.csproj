@@ -150,6 +150,22 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Logo\Logo1.JPG" />
+    <Content Include="Images\Logo\Logo10.JPG" />
+    <Content Include="Images\Logo\Logo11.JPG" />
+    <Content Include="Images\Logo\Logo12.JPG" />
+    <Content Include="Images\Logo\Logo13.JPG" />
+    <Content Include="Images\Logo\Logo14.JPG" />
+    <Content Include="Images\Logo\Logo15.JPG" />
+    <Content Include="Images\Logo\Logo16.JPG" />
+    <Content Include="Images\Logo\Logo2.JPG" />
+    <Content Include="Images\Logo\Logo3.JPG" />
+    <Content Include="Images\Logo\Logo4.JPG" />
+    <Content Include="Images\Logo\Logo5.JPG" />
+    <Content Include="Images\Logo\Logo6.JPG" />
+    <Content Include="Images\Logo\Logo7.JPG" />
+    <Content Include="Images\Logo\Logo8.JPG" />
+    <Content Include="Images\Logo\Logo9.JPG" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
