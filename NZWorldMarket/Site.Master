@@ -17,14 +17,35 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+    <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
+
 </head>
 <body>
-    <form runat="server">
+    <form runat="server" novalidate>
 
-        <asp:ScriptManager runat="server">
+       <%-- <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts--%>
+                <%--Framework Scripts-
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="bootstrap" />
@@ -37,13 +58,13 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts--%>
+                <%--Site Scripts
             </Scripts>
-        </asp:ScriptManager>
+        </asp:ScriptManager>--%>
 
         <nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerLogo" aria-controls="navbarTogglerLogo" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
@@ -52,17 +73,17 @@
                 <img src="Images/Logo/Logo16.JPG" width="200" height="50" alt="">
             </a>  
             
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <div class="collapse navbar-collapse" id="navbarTogglerLogo">
                 <ul class="navbar-nav justify-content-end mr-auto mt-2 mt-lg-0">
                   <li class="nav-item active">
                   </li>
                 </ul>
-                <asp:DropDownList ID="ddlContinent" runat="server" class="form-control mr-sm-2" DataSourceID="dsDdlContinent" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="True" >
-                    <asp:ListItem Selected="True" Value="-1" >-- Continent --</asp:ListItem>
+                <asp:DropDownList ID="ddlContinent" runat="server" class="custom-select custom-select-sm mr-sm-2" DataSourceID="dsDdlContinent" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="True" >
+                    <asp:ListItem Selected="True" Value="-1" >Continent</asp:ListItem>
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="dsDdlContinent" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT Id, Name, OrderCode, Active FROM Continent WHERE (Active = 1) ORDER BY OrderCode"></asp:SqlDataSource>
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> 
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search" aria-describedby="inputGroupPrepend2" > 
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" >Search</button>
             </div>
 
         </nav>
@@ -74,14 +95,32 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarResponsive" >
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link font-weight-bold active" runat="server" href="~/" >Home</a>
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/Create">New Advertisement</a>
+                <ul class="navbar-nav justify-content-end mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                      <a class="nav-item nav-link font-weight-bold active" runat="server" href="~/" >Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/NewAdver">New Advertisement</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-item nav-link font-weight-bold" runat="server" href="~/Contact">Contact</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-item nav-link font-weight-bold" runat="server" href="~/Faq">FAQ</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-item nav-link font-weight-bold" runat="server" href="~/About">About</a>
-                </div>
-                <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+                  </li>
+                </ul>
+                <%--<label for="select" class="col-sm-2 col-form-label col-form-label-sm" >Region</label>--%>
+                <asp:DropDownList ID="ddlRegion" runat="server" class="custom-select custom-select-sm" DataSourceID="dsDdlRegion" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="true" >
+                    <asp:ListItem Selected="True" Value="-1" >Region</asp:ListItem>
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="dsDdlRegion" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [Region] WHERE ([Active] = @Active) ORDER BY [OrderCode]">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="true" Name="Active" Type="Boolean" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
             </div>
 
         </nav>
@@ -92,7 +131,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Jorge Emilio Calapina Rozo</p>
             </footer>
         </div>
 

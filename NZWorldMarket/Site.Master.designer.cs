@@ -31,13 +31,22 @@ namespace NZWorldMarket {
         protected global::System.Web.UI.WebControls.SqlDataSource dsDdlContinent;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// ddlRegion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRegion;
+        
+        /// <summary>
+        /// dsDdlRegion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsDdlRegion;
         
         /// <summary>
         /// MainContent control.
