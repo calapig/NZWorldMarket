@@ -40,6 +40,42 @@ namespace NZWorldMarket {
         protected global::System.Web.UI.WebControls.SqlDataSource dsDvInfoCardAdv;
         
         /// <summary>
+        /// hdfPhotoId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfPhotoId;
+        
+        /// <summary>
+        /// advImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image advImage;
+        
+        /// <summary>
+        /// fuPhotoAdv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuPhotoAdv;
+        
+        /// <summary>
+        /// btnUploadPhotoAdv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUploadPhotoAdv;
+        
+        /// <summary>
         /// dvItemsAdv control.
         /// </summary>
         /// <remarks>
@@ -74,6 +110,15 @@ namespace NZWorldMarket {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource dsDdlItemsAdv;
+        
+        /// <summary>
+        /// chkMainPhoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkMainPhoto;
         
         /// <summary>
         /// fuAlbum control.

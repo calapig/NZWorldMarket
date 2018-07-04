@@ -12,7 +12,7 @@
         <a class="nav-link" data-toggle="tab" href="#infoCard">Info Card</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " data-toggle="tab" href="#detail">Detail</a>
+        <a class="nav-link " data-toggle="tab" href="#detail">Items</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " data-toggle="tab" href="#photos">Photos</a>
@@ -25,83 +25,125 @@
     <div id="myTabContent" class="tab-content">
 
       <div class="tab-pane fade" id="infoCard" style="padding:10px" >
-          <asp:DetailsView ID="dvInfoCardAdv" runat="server" Height="50px" Width="355px" DefaultMode="Edit" 
-              AutoGenerateRows="False" DataKeyNames="Id,UserId" DataSourceID="dsDvInfoCardAdv" >
-              <Fields>
-                  <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" InsertVisible="False" ReadOnly="True" />
-                  <asp:BoundField DataField="UserId" HeaderText="UserId" Visible="false" ReadOnly="True" />
-                  <asp:TemplateField HeaderText="Region" HeaderStyle-CssClass="input-group-text" >
-                      <EditItemTemplate>
-                        <asp:DropDownList ID="DdlRegionId" runat="server" Width="100%" CssClass="custom-select-sm" DataSourceID="dsDdlRegion" DataTextField="Name" DataValueField="Id" SelectedValue='<%# Bind("RegionId") %>' ></asp:DropDownList>
-                        <asp:SqlDataSource ID="dsDdlRegion" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT [Id], [Code], [Name] FROM [Region] WHERE ([Active] = @Active) ORDER BY [OrderCode]">
-                            <SelectParameters>
-                                <asp:Parameter DefaultValue="true" Name="Active" Type="Boolean" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
-                      </EditItemTemplate>
-                  </asp:TemplateField>
-                  <asp:TemplateField HeaderText="Type" HeaderStyle-CssClass="input-group-text" >
-                      <EditItemTemplate>
-                        <asp:DropDownList ID="DdlAdvertTypeId" runat="server" Width="100%" CssClass="custom-select-sm" DataSourceID="dsDdlTypeAdv" DataTextField="Name" DataValueField="Id" SelectedValue='<%# Bind("AdvertTypeId") %>' ></asp:DropDownList>
-                        <asp:SqlDataSource ID="dsDdlTypeAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [AdvertType] WHERE ([Active] = @Active) ORDER BY [OrderCode]">
-                            <SelectParameters>
-                                 <asp:Parameter DefaultValue="true" Name="Active" Type="Boolean" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
-                      </EditItemTemplate>
-                  </asp:TemplateField>
-                  <asp:BoundField DataField="Title" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Title" SortExpression="Title" />
-                  <asp:BoundField DataField="Overview" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Overview" SortExpression="Overview" />
-                  <asp:BoundField DataField="URL" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="URL" SortExpression="URL" />
-                  <asp:BoundField DataField="StyleSheet" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="StyleSheet" SortExpression="StyleSheet" Visible="false" />
-                  <asp:BoundField DataField="PostDeadLine" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PostDeadLine" SortExpression="PostDeadLine" />
-                  <asp:BoundField DataField="SearchTags" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="SearchTags" SortExpression="SearchTags" />
-                  <asp:BoundField DataField="PhotoId" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PhotoId" SortExpression="PhotoId" Visible="false" />
-                  <asp:CheckBoxField DataField="Active" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Active" SortExpression="Active" />
-                  <asp:BoundField DataField="Creation" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text"  HeaderText="Creation" SortExpression="Creation" />
-                  <asp:BoundField DataField="Modified" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text"  HeaderText="Modified" SortExpression="Modified" />
-                  <asp:CommandField ShowEditButton="True" ButtonType="Button"  ControlStyle-CssClass="btn btn-primary" />
-              </Fields>
-          </asp:DetailsView>
-          <asp:SqlDataSource ID="dsDvInfoCardAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" DeleteCommand="DELETE FROM [Advertisement] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Advertisement] ([UserId], [RegionId], [AdvertTypeId], [Title], [Overview], [URL], [StyleSheet], [PostDeadLine], [SearchTags], [PhotoId], [Active], [Creation], [Modified]) VALUES (@UserId, @RegionId, @AdvertTypeId, @Title, @Overview, @URL, @StyleSheet, @PostDeadLine, @SearchTags, @PhotoId, @Active, @Creation, @Modified)" SelectCommand="SELECT * FROM [Advertisement] WHERE ([Id] = @Id)" UpdateCommand="UPDATE [Advertisement] SET [UserId] = @UserId, [RegionId] = @RegionId, [AdvertTypeId] = @AdvertTypeId, [Title] = @Title, [Overview] = @Overview, [URL] = @URL, [StyleSheet] = @StyleSheet, [PostDeadLine] = @PostDeadLine, [SearchTags] = @SearchTags, [PhotoId] = @PhotoId, [Active] = @Active, [Creation] = @Creation, [Modified] = @Modified WHERE [Id] = @Id">
-              <DeleteParameters>
-                  <asp:Parameter Name="Id" Type="Int64" />
-              </DeleteParameters>
-              <InsertParameters>
-                  <asp:Parameter Name="UserId" Type="Int64" />
-                  <asp:Parameter Name="RegionId" Type="Byte" />
-                  <asp:Parameter Name="AdvertTypeId" Type="String" />
-                  <asp:Parameter Name="Title" Type="String" />
-                  <asp:Parameter Name="Overview" Type="String" />
-                  <asp:Parameter Name="URL" Type="String" />
-                  <asp:Parameter Name="StyleSheet" Type="String" />
-                  <asp:Parameter DbType="Date" Name="PostDeadLine" />
-                  <asp:Parameter Name="SearchTags" Type="String" />
-                  <asp:Parameter Name="PhotoId" Type="Int64" />
-                  <asp:Parameter Name="Active" Type="Boolean" />
-                  <asp:Parameter DbType="Date" Name="Creation" />
-                  <asp:Parameter DbType="Date" Name="Modified" />
-              </InsertParameters>
-              <SelectParameters>
-                  <asp:ControlParameter ControlID="hdfAdverId" Name="Id" PropertyName="Value" Type="Int64" />
-              </SelectParameters>
-              <UpdateParameters>
-                  <asp:Parameter Name="UserId" Type="Int64" />
-                  <asp:Parameter Name="RegionId" Type="Byte" />
-                  <asp:Parameter Name="AdvertTypeId" Type="String" />
-                  <asp:Parameter Name="Title" Type="String" />
-                  <asp:Parameter Name="Overview" Type="String" />
-                  <asp:Parameter Name="URL" Type="String" />
-                  <asp:Parameter Name="StyleSheet" Type="String" />
-                  <asp:Parameter DbType="Date" Name="PostDeadLine" />
-                  <asp:Parameter Name="SearchTags" Type="String" />
-                  <asp:Parameter Name="PhotoId" Type="Int64" />
-                  <asp:Parameter Name="Active" Type="Boolean" />
-                  <asp:Parameter DbType="Date" Name="Creation" />
-                  <asp:Parameter DbType="Date" Name="Modified" />
-                  <asp:Parameter Name="Id" Type="Int64" />
-              </UpdateParameters>
-          </asp:SqlDataSource>
+
+           <div class="row row justify-content-start">
+            <div class="col-4">
+              
+                <asp:DetailsView ID="dvInfoCardAdv" runat="server" Height="50px" Width="355px" DefaultMode="Edit" 
+                  AutoGenerateRows="False" DataKeyNames="Id,UserId" DataSourceID="dsDvInfoCardAdv" >
+                  <Fields>
+                      <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" InsertVisible="False" ReadOnly="True" />
+                      <asp:BoundField DataField="UserId" HeaderText="UserId" Visible="false" ReadOnly="True" />
+                      <asp:TemplateField HeaderText="Region" HeaderStyle-CssClass="input-group-text" >
+                          <EditItemTemplate>
+                            <asp:DropDownList ID="DdlRegionId" runat="server" Width="100%" CssClass="custom-select-sm" DataSourceID="dsDdlRegion" DataTextField="Name" DataValueField="Id" SelectedValue='<%# Bind("RegionId") %>' ></asp:DropDownList>
+                            <asp:SqlDataSource ID="dsDdlRegion" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT [Id], [Code], [Name] FROM [Region] WHERE ([Active] = @Active) ORDER BY [OrderCode]">
+                                <SelectParameters>
+                                    <asp:Parameter DefaultValue="true" Name="Active" Type="Boolean" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                          </EditItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField HeaderText="Type" HeaderStyle-CssClass="input-group-text" >
+                          <EditItemTemplate>
+                            <asp:DropDownList ID="DdlAdvertTypeId" runat="server" Width="100%" CssClass="custom-select-sm" DataSourceID="dsDdlTypeAdv" DataTextField="Name" DataValueField="Id" SelectedValue='<%# Bind("AdvertTypeId") %>' ></asp:DropDownList>
+                            <asp:SqlDataSource ID="dsDdlTypeAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [AdvertType] WHERE ([Active] = @Active) ORDER BY [OrderCode]">
+                                <SelectParameters>
+                                     <asp:Parameter DefaultValue="true" Name="Active" Type="Boolean" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                          </EditItemTemplate>
+                      </asp:TemplateField>
+                      <asp:BoundField DataField="Title" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Title" SortExpression="Title" />
+                      <asp:BoundField DataField="Overview" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Overview" SortExpression="Overview" />
+                      <asp:BoundField DataField="URL" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="URL" SortExpression="URL" />
+                      <asp:BoundField DataField="StyleSheet" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="StyleSheet" SortExpression="StyleSheet" Visible="false" />
+                      <asp:BoundField DataField="PostDeadLine" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PostDeadLine" SortExpression="PostDeadLine" />
+                      <asp:BoundField DataField="SearchTags" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="SearchTags" SortExpression="SearchTags" />
+                      <asp:BoundField DataField="PhotoId" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PhotoId" SortExpression="PhotoId" Visible="false" />
+                      <asp:CheckBoxField DataField="Active" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Active" SortExpression="Active" />
+                      <asp:BoundField DataField="Creation" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text"  HeaderText="Creation" SortExpression="Creation" />
+                      <asp:BoundField DataField="Modified" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text"  HeaderText="Modified" SortExpression="Modified" />
+                      <asp:CommandField ShowEditButton="True" ButtonType="Button"  ControlStyle-CssClass="btn btn-primary" />
+                  </Fields>
+                </asp:DetailsView>
+                <asp:SqlDataSource ID="dsDvInfoCardAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" 
+                    DeleteCommand="DELETE FROM [Advertisement] WHERE [Id] = @Id" 
+                    InsertCommand="INSERT INTO [Advertisement] ([UserId], [RegionId], [AdvertTypeId], [Title], [Overview], [URL], [StyleSheet], [PostDeadLine], [SearchTags], [PhotoId], [Active], [Creation], [Modified]) VALUES (@UserId, @RegionId, @AdvertTypeId, @Title, @Overview, @URL, @StyleSheet, @PostDeadLine, @SearchTags, @PhotoId, @Active, @Creation, @Modified)" 
+                    SelectCommand="SELECT * FROM [Advertisement] WHERE ([Id] = @Id)" 
+                    UpdateCommand="UPDATE [Advertisement] SET [UserId] = @UserId, [RegionId] = @RegionId, [AdvertTypeId] = @AdvertTypeId, [Title] = @Title, [Overview] = @Overview, [URL] = @URL, [StyleSheet] = @StyleSheet, [PostDeadLine] = @PostDeadLine, [SearchTags] = @SearchTags, [PhotoId] = @PhotoId, [Active] = @Active, [Creation] = @Creation, [Modified] = @Modified WHERE [Id] = @Id">
+                    <DeleteParameters>
+                        <asp:Parameter Name="Id" Type="Int64" />
+                    </DeleteParameters>
+                    <InsertParameters>
+                        <asp:Parameter Name="UserId" Type="Int64" />
+                        <asp:Parameter Name="RegionId" Type="Byte" />
+                        <asp:Parameter Name="AdvertTypeId" Type="String" />
+                        <asp:Parameter Name="Title" Type="String" />
+                        <asp:Parameter Name="Overview" Type="String" />
+                        <asp:Parameter Name="URL" Type="String" />
+                        <asp:Parameter Name="StyleSheet" Type="String" />
+                        <asp:Parameter DbType="Date" Name="PostDeadLine" />
+                        <asp:Parameter Name="SearchTags" Type="String" />
+                        <asp:Parameter Name="PhotoId" Type="Int64" />
+                        <asp:Parameter Name="Active" Type="Boolean" />
+                        <asp:Parameter DbType="Date" Name="Creation" />
+                        <asp:Parameter DbType="Date" Name="Modified" />
+                    </InsertParameters>
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="hdfAdverId" Name="Id" PropertyName="Value" Type="Int64" />
+                    </SelectParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="UserId" Type="Int64" />
+                        <asp:Parameter Name="RegionId" Type="Byte" />
+                        <asp:Parameter Name="AdvertTypeId" Type="String" />
+                        <asp:Parameter Name="Title" Type="String" />
+                        <asp:Parameter Name="Overview" Type="String" />
+                        <asp:Parameter Name="URL" Type="String" />
+                        <asp:Parameter Name="StyleSheet" Type="String" />
+                        <asp:Parameter DbType="Date" Name="PostDeadLine" />
+                        <asp:Parameter Name="SearchTags" Type="String" />
+                        <asp:Parameter Name="PhotoId" Type="Int64" />
+                        <asp:Parameter Name="Active" Type="Boolean" />
+                        <asp:Parameter DbType="Date" Name="Creation" />
+                        <asp:Parameter DbType="Date" Name="Modified" />
+                        <asp:Parameter Name="Id" Type="Int64" />
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+
+            </div>
+            <div class="col-4">
+                <fieldset>
+
+                    <legend>Main Photo</legend>
+
+                    <div class="form-group">
+
+                        <asp:HiddenField ID="hdfPhotoId" runat="server" />
+                      
+                        <div class="card mb-3" >
+                            <div class="photoItemContainer" >
+                                <asp:Image ID="advImage" runat="server" CssClass="rounded mx-auto d-block" Style="max-width: 100%; height: auto;" />
+                            </div>
+                            <div class="card-body">
+                                <%--
+                                <asp:LinkButton ID="LnkDelAdvPhoto" runat="server" CssClass="card-link" onclick="lnkDelAdvItemPhoto_Click">Delete</asp:LinkButton>
+                                <asp:LinkButton ID="lnkSetAdvMainPhoto" runat="server" CssClass="card-link" onclick="lnkSetMainPhoto_Click">Set Main</asp:LinkButton>
+                                --%>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <asp:FileUpload ID="fuPhotoAdv" runat="server" />
+                            <asp:Button ID="btnUploadPhotoAdv" runat="server" Text="Upload" class="input-group-text" OnClick="btnUploadPhotoAdv_Click" />
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+          </div>
+
+          
       </div>
 
       <div class="tab-pane fade " id="detail" style="padding:10px" >
@@ -259,13 +301,14 @@
 
           <hr class="my-4">
 
-          <fieldset>
+          <fieldset >
+
               <legend>Add New Photo</legend>
 
               <div class="form-group">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="chkMainPhoto" checked="">
-                    <label class="custom-control-label" for="chkMainPhoto">Main Photo</label>
+                  <div class="input-group mb-3">
+                    <input type="checkbox" class="custom-control custom-checkbox" id="chkMainPhoto" runat="server" checked="" />
+                    <label class="custom-control" for="chkMainPhoto">Main Photo</label>
                   </div>
               </div>
 
@@ -286,15 +329,15 @@
               <asp:DataList ID="DlPhotos" runat="server" DataSourceID="dsDlPhotos" DataKeyField="Id" RepeatColumns="3">
                   <ItemTemplate>
                       <asp:HiddenField ID="hdfPhotoId" runat="server" Value='<%# Eval("PhotoId") %>' />
+                      <asp:HiddenField ID="hdfAdverItemPhotoId" runat="server" Value='<%# Eval("Id") %>' />
+                      
                       <div class="card mb-3" >
                           <div class="photoItemContainer" >
                               <asp:Image ID="itemImage" runat="server" CssClass="rounded mx-auto d-block" ImageUrl='<%# Eval("PhotoId", "CommonResources/ShowImage.ashx?photoId={0}") %>' Style="max-width: 100%; height: auto;" />
                           </div>
                           <div class="card-body">
-                              <asp:LinkButton ID="lnkDelete" runat="server" CssClass="card-link" onclick="lnkDelete_Click">Delete</asp:LinkButton>
-                              <asp:LinkButton ID="lnkMain" runat="server" CssClass="card-link" onclick="lnkSetMain_Click">Set Main</asp:LinkButton>
-                              <%--<a href="#" class="card-link">Card link</a>
-                              <a href="#" class="card-link">Another link</a>--%>
+                              <asp:LinkButton ID="LnkDelAdvItemPhoto" runat="server" CssClass="card-link" onclick="lnkDelAdvItemPhoto_Click">Delete</asp:LinkButton>
+                              <asp:LinkButton ID="lnkSetMainPhoto" runat="server" CssClass="card-link" onclick="lnkSetMainPhoto_Click">Set Main</asp:LinkButton>
                           </div>
                       </div>
                       <%-- Id:
@@ -317,11 +360,12 @@
                   </ItemTemplate>
               </asp:DataList>
 
-              <asp:SqlDataSource runat="server" ID="dsDlPhotos" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT AdvertItemPhoto.Id, AdvertItemPhoto.AdvertItemId, AdvertItemPhoto.PhotoId, 
-Photo.Location, Photo.Extension, Photo.[Image], Photo.Name, Photo.Active
-FROM AdvertItem
-INNER JOIN AdvertItemPhoto ON AdvertItemPhoto.AdvertItemId = AdvertItem.Id
-INNER JOIN Photo ON AdvertItemPhoto.PhotoId = Photo.Id WHERE (AdvertItemPhoto.AdvertItemId = @AdvertItemId)">
+              <asp:SqlDataSource runat="server" ID="dsDlPhotos" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' 
+                  SelectCommand="SELECT AdvertItemPhoto.Id, AdvertItemPhoto.AdvertItemId, AdvertItemPhoto.PhotoId, 
+                    Photo.Location, Photo.Extension, Photo.[Image], Photo.Name, Photo.Active
+                    FROM AdvertItem
+                    INNER JOIN AdvertItemPhoto ON AdvertItemPhoto.AdvertItemId = AdvertItem.Id
+                    INNER JOIN Photo ON AdvertItemPhoto.PhotoId = Photo.Id WHERE (AdvertItemPhoto.AdvertItemId = @AdvertItemId)">
                   <SelectParameters>
                       <asp:ControlParameter ControlID="DdlItemsAdv" PropertyName="SelectedValue" Name="AdvertItemId"></asp:ControlParameter>
                   </SelectParameters>

@@ -14,7 +14,7 @@ namespace NZWorldMarket
         {
             if (!IsPostBack) // on initial load 
             {
-              
+                Page.Title = "NZ World Market";
             }   
         }
     }

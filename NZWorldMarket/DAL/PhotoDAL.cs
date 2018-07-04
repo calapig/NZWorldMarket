@@ -56,8 +56,26 @@ namespace NZWorldMarket.DAL
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@ID", photoId);
 
-            return cmd.ExecuteScalar();
+            object image = cmd.ExecuteScalar();
+
+            this.ClosePhotoDAL();
+
+            return image;
         }
 
+        internal int DeleteItemPhoto(long id)
+        {
+            string insert = @" update AdvertItem set PhotoId = NULL where PhotoId = @Id; 
+                               delete from AdvertItemPhoto where Id = @Id ";
+
+            SqlCommand cmd = new SqlCommand(insert, conn);
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            int num_deletes = cmd.ExecuteNonQuery();
+
+            this.ClosePhotoDAL();
+
+            return num_deletes;
+        }
     }
 }

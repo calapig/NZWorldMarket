@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -51,6 +52,20 @@ namespace NZWorldMarket.DAL
             return num_inserts;
         }
 
+        internal int UpdatePhoto(long advertId, long photoId)
+        {
+            string select = @"UPDATE Advertisement SET PhotoId = @PhotoId WHERE Id = @ID";
 
+            SqlCommand cmd = new SqlCommand(select, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@PhotoId", photoId);
+            cmd.Parameters.AddWithValue("@ID", advertId);
+
+            int num_updates = cmd.ExecuteNonQuery();
+
+            this.CloseAdvertisementDAL();
+
+            return num_updates;
+        }
     }
 }
