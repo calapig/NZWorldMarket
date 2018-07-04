@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NZWorldMarket.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,5 +35,37 @@ namespace NZWorldMarket
             //}
         }
 
+        protected void btnUploadPhoto_Click(object sender, EventArgs e)
+        {
+            if (!fuAlbum.HasFile)
+            {
+                //Label1.Visible = true;
+                //Label1.Text = "Please Select Image File";    //checking if file uploader has no file selected
+            }
+            else
+            {
+                int length = fuAlbum.PostedFile.ContentLength;
+                string photoName = fuAlbum.FileName;
+                byte[] pic = new byte[length];
+
+                fuAlbum.PostedFile.InputStream.Read(pic, 0, length);
+
+                try
+                {
+                    PhotoDAL photo = new PhotoDAL();
+                    Int64 photoId = photo.CreatePhoto(pic, photoName);
+
+                    AdvertItemPhotoDAL advItemPhoto = new AdvertItemPhotoDAL();
+                    advItemPhoto.Create(long.Parse(DdlItemsAdv.SelectedValue), photoId);
+
+                    //Label1.Visible = true;
+                    //Label1.Text = "Image Uploaded Sucessfully";  //after Sucessfully uploaded image
+                }
+                finally
+                {
+                    
+                }
+            }
+        }
     }
 }

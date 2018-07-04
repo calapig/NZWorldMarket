@@ -257,25 +257,53 @@
                   </div>
               </div>
 
-              <div class="form-group">
+              <asp:FileUpload ID="fuAlbum" runat="server" />
+              <asp:Button ID="btnUploadPhoto" runat="server" Text="Upload" class="input-group-text" OnClick="btnUploadPhoto_Click" />
+
+              <%--<div class="form-group">
                 <div class="input-group mb-3">
                   <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inFile">
+                    
+                    
                     <label class="custom-file-label" for="inFile">Choose file</label>
                   </div>
                   <div class="input-group-append">
-                    <asp:Button ID="btnUploadPhoto" runat="server" Text="Upload" class="input-group-text" />
+                    
                   </div>
                 </div>
-              </div>
+              </div>--%>
+
+
           </fieldset>
 
           <fieldset>
               <legend>Photos</legend>
 
-              <asp:DataList ID="DlPhotos" runat="server" DataSourceID="dsDlPhotos"></asp:DataList>
+              <asp:DataList ID="DlPhotos" runat="server" DataSourceID="dsDlPhotos">
+                  <ItemTemplate>
+                      Id:
+                      <asp:Label Text='<%# Eval("Id") %>' runat="server" ID="IdLabel" /><br />
+                      AdvertItemId:
+                      <asp:Label Text='<%# Eval("AdvertItemId") %>' runat="server" ID="AdvertItemIdLabel" /><br />
+                      PhotoId:
+                      <asp:Label Text='<%# Eval("PhotoId") %>' runat="server" ID="PhotoIdLabel" /><br />
+                      Location:
+                      <asp:Label Text='<%# Eval("Location") %>' runat="server" ID="LocationLabel" /><br />
+                      Extension:
+                      <asp:Label Text='<%# Eval("Extension") %>' runat="server" ID="ExtensionLabel" /><br />
+                      Active:
+                      <asp:Label Text='<%# Eval("Active") %>' runat="server" ID="ActiveLabel" /><br />
+                      MainPhoto:
+                      <asp:Label Text='<%# Eval("MainPhoto") %>' runat="server" ID="MainPhotoLabel" /><br />
+                      <br />
+                  </ItemTemplate>
+              </asp:DataList>
 
-              <asp:SqlDataSource runat="server" ID="dsDlPhotos"></asp:SqlDataSource>
+              <asp:SqlDataSource runat="server" ID="dsDlPhotos" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT AdvertItemPhoto.Id, AdvertItemPhoto.AdvertItemId, Photo.Id AS PhotoId, Photo.Location, Photo.Extension, Photo.Active, AdvertItem.PhotoId AS MainPhoto FROM AdvertItemPhoto INNER JOIN Photo ON AdvertItemPhoto.PhotoId = Photo.Id INNER JOIN AdvertItem ON AdvertItemPhoto.AdvertItemId = AdvertItem.Id AND Photo.Id = AdvertItem.PhotoId WHERE (AdvertItemPhoto.AdvertItemId = @AdvertItemId)">
+                  <SelectParameters>
+                      <asp:ControlParameter ControlID="DdlItemsAdv" PropertyName="SelectedValue" Name="AdvertItemId"></asp:ControlParameter>
+                  </SelectParameters>
+              </asp:SqlDataSource>
           </fieldset>
 
       </div>

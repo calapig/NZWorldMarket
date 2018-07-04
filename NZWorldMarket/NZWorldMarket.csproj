@@ -258,7 +258,9 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\AdvertisementDAL.cs" />
+    <Compile Include="DAL\AdvertItemPhotoDAL.cs" />
     <Compile Include="DAL\PersonDAL.cs" />
+    <Compile Include="DAL\PhotoDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -316,6 +318,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\UserImages\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

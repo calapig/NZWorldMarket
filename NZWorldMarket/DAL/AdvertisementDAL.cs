@@ -46,6 +46,8 @@ namespace NZWorldMarket.DAL
 
             Int64 num_inserts = (Int64)cmd.ExecuteScalar();
 
+            this.CloseAdvertisementDAL();
+
             return num_inserts;
         }
 

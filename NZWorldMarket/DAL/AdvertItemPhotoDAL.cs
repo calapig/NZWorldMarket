@@ -7,13 +7,11 @@ using System.Web;
 
 namespace NZWorldMarket.DAL
 {
-    public class UserDAL
+    public class AdvertItemPhotoDAL
     {
         private SqlConnection conn = null;
-        private string selectUser = @"select Id, PersonId, MembershipStart, Active from [User] ";
-        private string insertUser = @"insert into [User](PersonId, MembershipStart) values ";
 
-        public UserDAL()
+        public AdvertItemPhotoDAL()
         {
             try
             {
@@ -27,20 +25,24 @@ namespace NZWorldMarket.DAL
             }
         }
 
-        public void CloseUserDAL()
+        public void CloseAdvertItemPhotoDAL()
         {
             conn.Close();
         }
 
-        public Int64 Create(Int64 personId)
+        public Int64 Create(long advertItemId, long photoId)
         {
-            insertUser += @" (" + personId + ", GETDATE()); " +
-                           " SELECT CAST(scope_identity() AS bigint) ";
-            SqlCommand cmd = new SqlCommand(insertUser, conn);
+            string insert = @"insert into AdvertItemPhoto (AdvertItemId, PhotoId) 
+                              values (@advertItemId, @photoId);
+                              select CAST(scope_identity() AS bigint) ";
+
+            SqlCommand cmd = new SqlCommand(insert, conn);
+            cmd.Parameters.AddWithValue("@advertItemId", advertItemId);
+            cmd.Parameters.AddWithValue("@photoId", photoId);
 
             Int64 num_inserts = (Int64)cmd.ExecuteScalar();
 
-            this.CloseUserDAL();
+            this.CloseAdvertItemPhotoDAL();
 
             return num_inserts;
         }
