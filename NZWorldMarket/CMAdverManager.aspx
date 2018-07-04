@@ -15,7 +15,7 @@
         <a class="nav-link " data-toggle="tab" href="#detail">Detail</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " data-toggle="tab" href="#album">Album</a>
+        <a class="nav-link " data-toggle="tab" href="#photos">Photos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " data-toggle="tab" href="#schedule">Schedule</a>
@@ -23,6 +23,7 @@
     </ul>
 
     <div id="myTabContent" class="tab-content">
+
       <div class="tab-pane fade" id="infoCard" style="padding:10px" >
           <asp:DetailsView ID="dvInfoCardAdv" runat="server" Height="50px" Width="355px" DefaultMode="Edit" 
               AutoGenerateRows="False" DataKeyNames="Id,UserId" DataSourceID="dsDvInfoCardAdv" >
@@ -59,7 +60,7 @@
                   <asp:CheckBoxField DataField="Active" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Active" SortExpression="Active" />
                   <asp:BoundField DataField="Creation" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text"  HeaderText="Creation" SortExpression="Creation" />
                   <asp:BoundField DataField="Modified" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text"  HeaderText="Modified" SortExpression="Modified" />
-                  <asp:CommandField ShowEditButton="True" ButtonType="Button"  ControlStyle-CssClass="btn btn-success" />
+                  <asp:CommandField ShowEditButton="True" ButtonType="Button"  ControlStyle-CssClass="btn btn-primary" />
               </Fields>
           </asp:DetailsView>
           <asp:SqlDataSource ID="dsDvInfoCardAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" DeleteCommand="DELETE FROM [Advertisement] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Advertisement] ([UserId], [RegionId], [AdvertTypeId], [Title], [Overview], [URL], [StyleSheet], [PostDeadLine], [SearchTags], [PhotoId], [Active], [Creation], [Modified]) VALUES (@UserId, @RegionId, @AdvertTypeId, @Title, @Overview, @URL, @StyleSheet, @PostDeadLine, @SearchTags, @PhotoId, @Active, @Creation, @Modified)" SelectCommand="SELECT * FROM [Advertisement] WHERE ([Id] = @Id)" UpdateCommand="UPDATE [Advertisement] SET [UserId] = @UserId, [RegionId] = @RegionId, [AdvertTypeId] = @AdvertTypeId, [Title] = @Title, [Overview] = @Overview, [URL] = @URL, [StyleSheet] = @StyleSheet, [PostDeadLine] = @PostDeadLine, [SearchTags] = @SearchTags, [PhotoId] = @PhotoId, [Active] = @Active, [Creation] = @Creation, [Modified] = @Modified WHERE [Id] = @Id">
@@ -102,9 +103,11 @@
               </UpdateParameters>
           </asp:SqlDataSource>
       </div>
+
       <div class="tab-pane fade " id="detail" style="padding:10px" >
-          <asp:DetailsView ID="dvItemsAdv" runat="server" Height="50px" Width="355px" AllowPaging="True" AutoGenerateRows="False" 
-              DataKeyNames="Id" DataSourceID="dsDvItemsAdv" BorderStyle="None" OnDataBound="dvItemsAdv_DataBound">
+          <asp:DetailsView ID="dvItemsAdv" runat="server" Height="50px" Width="355px" AllowPaging="True" PagerSettings-Mode="Numeric"  
+              PagerStyle-Font-Size="XX-Large" PagerStyle-Font-Bold="true"
+              AutoGenerateRows="False" DataKeyNames="Id" DataSourceID="dsDvItemsAdv" BorderStyle="None" OnDataBound="dvItemsAdv_DataBound">
               <Fields>
                   <asp:BoundField DataField="Id" Visible="false" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                   <asp:BoundField DataField="AdvertisementId" Visible="false" HeaderText="AdvertisementId" InsertVisible="False" ReadOnly="True" SortExpression="AdvertisementId" />
@@ -186,7 +189,7 @@
                   <asp:BoundField DataField="SearchTags" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="SearchTags" SortExpression="SearchTags" />
                   <asp:BoundField DataField="PhotoId" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PhotoId" SortExpression="PhotoId" />
                   <asp:CheckBoxField DataField="Active" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Active" SortExpression="Active" />
-                  <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" ButtonType="Button"  ControlStyle-CssClass="btn btn-success" />
+                  <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" ButtonType="Button"  ControlStyle-CssClass="btn btn-primary" />
               </Fields>
               <EmptyDataTemplate>
                    <asp:LinkButton ID="lnkNewItem" runat="server" CssClass="btn btn-outline-info" onclick="lnkNewItem_Click">No records found click here to insert one</asp:LinkButton>
@@ -234,54 +237,67 @@
               </UpdateParameters>
           </asp:SqlDataSource>
       </div>
-      <div class="tab-pane fade active show" id="album" style="padding:10px" >
+
+      <div class="tab-pane fade active show" id="photos" style="padding:10px" >
           <div class="form-group">
-            <label class="form-control-label" for="DdlItemsAdv">Item:</label>
-            <asp:DropDownList ID="DdlItemsAdv" CssClass="custom-select-sm" runat="server" DataSourceID="dsDdlItemsAdv" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="true" AutoPostBack="true" >
-                <asp:ListItem Value="-1" >-- Select --</asp:ListItem>
-            </asp:DropDownList>
-            <asp:SqlDataSource ID="dsDdlItemsAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [AdvertItem] WHERE ([AdvertisementId] = @AdvertisementId) ORDER BY [OrderCode], [Name]">
-                <SelectParameters>
-                    <asp:ControlParameter ControlID="hdfAdverId" Name="AdvertisementId" PropertyName="Value" Type="Int64" />
-                </SelectParameters>
-            </asp:SqlDataSource>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="DdlItemsAdv">Item:</label>
+                </div>
+                <asp:DropDownList ID="DdlItemsAdv" CssClass="custom-select" runat="server" DataSourceID="dsDdlItemsAdv" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="true" AutoPostBack="true" >
+                    <asp:ListItem Value="-1" >-- Select --</asp:ListItem>
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="dsDdlItemsAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [AdvertItem] WHERE ([AdvertisementId] = @AdvertisementId) ORDER BY [OrderCode], [Name]">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="hdfAdverId" Name="AdvertisementId" PropertyName="Value" Type="Int64" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </div>
+ 
           </div>
+
+          <hr class="my-4">
 
           <fieldset>
               <legend>Add New Photo</legend>
 
               <div class="form-group">
                   <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                    <label class="custom-control-label" for="customCheck1">Main Photo</label>
+                    <input type="checkbox" class="custom-control-input" id="chkMainPhoto" checked="">
+                    <label class="custom-control-label" for="chkMainPhoto">Main Photo</label>
                   </div>
               </div>
 
-              <asp:FileUpload ID="fuAlbum" runat="server" />
-              <asp:Button ID="btnUploadPhoto" runat="server" Text="Upload" class="input-group-text" OnClick="btnUploadPhoto_Click" />
-
-              <%--<div class="form-group">
-                <div class="input-group mb-3">
-                  <div class="custom-file">
-                    
-                    
-                    <label class="custom-file-label" for="inFile">Choose file</label>
+              <div class="form-group">
+                  <div class="input-group mb-3">
+                    <asp:FileUpload ID="fuAlbum" runat="server" />
+                    <asp:Button ID="btnUploadPhoto" runat="server" Text="Upload" class="input-group-text" OnClick="btnUploadPhoto_Click" />
                   </div>
-                  <div class="input-group-append">
-                    
-                  </div>
-                </div>
-              </div>--%>
-
+              </div>
 
           </fieldset>
 
-          <fieldset>
-              <legend>Photos</legend>
+          <hr class="my-4">
 
-              <asp:DataList ID="DlPhotos" runat="server" DataSourceID="dsDlPhotos" DataKeyField="Id">
+          <fieldset>
+              <legend>Gallery</legend>
+
+              <asp:DataList ID="DlPhotos" runat="server" DataSourceID="dsDlPhotos" DataKeyField="Id" RepeatColumns="3">
                   <ItemTemplate>
-                      Id:
+                      <asp:HiddenField ID="hdfPhotoId" runat="server" Value='<%# Eval("PhotoId") %>' />
+                      <div class="card mb-3" >
+                          <div class="photoItemContainer" >
+                              <asp:Image ID="itemImage" runat="server" CssClass="rounded mx-auto d-block" ImageUrl='<%# Eval("PhotoId", "CommonResources/ShowImage.ashx?photoId={0}") %>' Style="max-width: 100%; height: auto;" />
+                          </div>
+                          <div class="card-body">
+                              <asp:LinkButton ID="lnkDelete" runat="server" CssClass="card-link" onclick="lnkDelete_Click">Delete</asp:LinkButton>
+                              <asp:LinkButton ID="lnkMain" runat="server" CssClass="card-link" onclick="lnkSetMain_Click">Set Main</asp:LinkButton>
+                              <%--<a href="#" class="card-link">Card link</a>
+                              <a href="#" class="card-link">Another link</a>--%>
+                          </div>
+                      </div>
+                      <%-- Id:
                       <asp:Label Text='<%# Eval("Id") %>' runat="server" ID="IdLabel" /><br />
                       AdvertItemId:
                       <asp:Label Text='<%# Eval("AdvertItemId") %>' runat="server" ID="AdvertItemIdLabel" /><br />
@@ -297,7 +313,7 @@
                       <asp:Label Text='<%# Eval("Name") %>' runat="server" ID="NameLabel" /><br />
                       Active:
                       <asp:Label Text='<%# Eval("Active") %>' runat="server" ID="ActiveLabel" /><br />
-                      <br />
+                      <br />--%>
                   </ItemTemplate>
               </asp:DataList>
 
@@ -311,14 +327,12 @@ INNER JOIN Photo ON AdvertItemPhoto.PhotoId = Photo.Id WHERE (AdvertItemPhoto.Ad
                   </SelectParameters>
               </asp:SqlDataSource>
           </fieldset>
-
       </div>
+
       <div class="tab-pane fade" id="schedule" style="padding:10px" >
         
       </div>
+
     </div>
-    
-    <%--<asp:MultiView ID="MultiView1" runat="server">
-    </asp:MultiView>--%>
 
 </asp:Content>

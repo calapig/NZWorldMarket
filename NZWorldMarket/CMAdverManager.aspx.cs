@@ -58,6 +58,7 @@ namespace NZWorldMarket
                     AdvertItemPhotoDAL advItemPhoto = new AdvertItemPhotoDAL();
                     advItemPhoto.Create(long.Parse(DdlItemsAdv.SelectedValue), photoId);
 
+                    DlPhotos.DataBind();
                     //Label1.Visible = true;
                     //Label1.Text = "Image Uploaded Sucessfully";  //after Sucessfully uploaded image
                 }
@@ -66,6 +67,16 @@ namespace NZWorldMarket
                     
                 }
             }
+        }
+
+        protected void lnkDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void lnkSetMain_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

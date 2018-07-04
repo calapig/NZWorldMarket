@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace NZWorldMarket.DAL
     public class PhotoDAL
     {
         private SqlConnection conn = null;
+
         public PhotoDAL()
         {
             try
@@ -45,5 +47,17 @@ namespace NZWorldMarket.DAL
 
             return num_inserts;
         }
+
+        public object GetImage(long photoId)
+        {
+            string select = @"SELECT Image FROM Photo WHERE Id = @ID";
+
+            SqlCommand cmd = new SqlCommand(select, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@ID", photoId);
+
+            return cmd.ExecuteScalar();
+        }
+
     }
 }
