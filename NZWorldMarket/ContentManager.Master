@@ -49,7 +49,7 @@
             
             <a class="navbar-brand" runat="server" href="~/">
                 <%--NZWorldMarket.co--%>
-                <img src="Images/Logo/Logo16.JPG" width="200" height="50" alt="">
+                <img src="Images/Logo/Logo16orange.JPG" width="200" height="50" alt="">
             </a>  
             
             <div class="collapse navbar-collapse" id="navbarTogglerLogo">

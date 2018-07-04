@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContentManager.Master" AutoEventWireup="true" CodeBehind="AdverManager.aspx.cs" Inherits="NZWorldMarket.WebForm3" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContentManager.Master" AutoEventWireup="true" CodeBehind="CMAdverManager.aspx.cs" Inherits="NZWorldMarket.CMAdverManager" %>
 <asp:Content ID="cManagerAdver" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="meContainer" >
@@ -279,7 +279,7 @@
           <fieldset>
               <legend>Photos</legend>
 
-              <asp:DataList ID="DlPhotos" runat="server" DataSourceID="dsDlPhotos">
+              <asp:DataList ID="DlPhotos" runat="server" DataSourceID="dsDlPhotos" DataKeyField="Id">
                   <ItemTemplate>
                       Id:
                       <asp:Label Text='<%# Eval("Id") %>' runat="server" ID="IdLabel" /><br />
@@ -291,15 +291,21 @@
                       <asp:Label Text='<%# Eval("Location") %>' runat="server" ID="LocationLabel" /><br />
                       Extension:
                       <asp:Label Text='<%# Eval("Extension") %>' runat="server" ID="ExtensionLabel" /><br />
+                      Image:
+                      <asp:Label Text='<%# Eval("Image") %>' runat="server" ID="ImageLabel" /><br />
+                      Name:
+                      <asp:Label Text='<%# Eval("Name") %>' runat="server" ID="NameLabel" /><br />
                       Active:
                       <asp:Label Text='<%# Eval("Active") %>' runat="server" ID="ActiveLabel" /><br />
-                      MainPhoto:
-                      <asp:Label Text='<%# Eval("MainPhoto") %>' runat="server" ID="MainPhotoLabel" /><br />
                       <br />
                   </ItemTemplate>
               </asp:DataList>
 
-              <asp:SqlDataSource runat="server" ID="dsDlPhotos" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT AdvertItemPhoto.Id, AdvertItemPhoto.AdvertItemId, Photo.Id AS PhotoId, Photo.Location, Photo.Extension, Photo.Active, AdvertItem.PhotoId AS MainPhoto FROM AdvertItemPhoto INNER JOIN Photo ON AdvertItemPhoto.PhotoId = Photo.Id INNER JOIN AdvertItem ON AdvertItemPhoto.AdvertItemId = AdvertItem.Id AND Photo.Id = AdvertItem.PhotoId WHERE (AdvertItemPhoto.AdvertItemId = @AdvertItemId)">
+              <asp:SqlDataSource runat="server" ID="dsDlPhotos" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT AdvertItemPhoto.Id, AdvertItemPhoto.AdvertItemId, AdvertItemPhoto.PhotoId, 
+Photo.Location, Photo.Extension, Photo.[Image], Photo.Name, Photo.Active
+FROM AdvertItem
+INNER JOIN AdvertItemPhoto ON AdvertItemPhoto.AdvertItemId = AdvertItem.Id
+INNER JOIN Photo ON AdvertItemPhoto.PhotoId = Photo.Id WHERE (AdvertItemPhoto.AdvertItemId = @AdvertItemId)">
                   <SelectParameters>
                       <asp:ControlParameter ControlID="DdlItemsAdv" PropertyName="SelectedValue" Name="AdvertItemId"></asp:ControlParameter>
                   </SelectParameters>

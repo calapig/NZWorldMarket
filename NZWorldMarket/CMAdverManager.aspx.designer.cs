@@ -10,7 +10,7 @@
 namespace NZWorldMarket {
     
     
-    public partial class WebForm3 {
+    public partial class CMAdverManager {
         
         /// <summary>
         /// hdfAdverId control.
