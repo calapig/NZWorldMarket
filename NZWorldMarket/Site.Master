@@ -17,14 +17,29 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
+  <%--  <script>
+         var str=location.href.toLowerCase();
+    $("#nav li a").each(function() {
+        if (str.indexOf($(this).attr("href").toLowerCase()) > -1) {
+            $("li.current-menu-item").removeClass("current-menu-item");
+            $(this).parent().addClass("current-menu-item");
+        }
+    });
+    $("li.current-menu-item").parents().each(function(){
+        if ($(this).is("li")){
+            $(this).addClass("current-menu-item");
+        }
+    });
+    </script>--%>
+
 </head>
 <body>
     <form runat="server" >
 
-       <%-- <asp:ScriptManager runat="server">
+        <asp:ScriptManager runat="server">
             <Scripts>
-                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts-
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 
+                Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="bootstrap" />
@@ -37,9 +52,9 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts
+                <%--Site Scripts--%>
             </Scripts>
-        </asp:ScriptManager>--%>
+        </asp:ScriptManager>
 
         <nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
 
