@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="NZWorldMarket.Contact" %>
+﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/WebApp.Master" AutoEventWireup="true" CodeBehind="WAContact.aspx.cs" Inherits="NZWorldMarket.WAContact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     

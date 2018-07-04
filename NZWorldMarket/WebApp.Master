@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="NZWorldMarket.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WebApp.Master.cs" Inherits="NZWorldMarket.WebAppMaster" %>
 
 <!DOCTYPE html>
 
@@ -91,19 +91,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive" >
                 <ul class="navbar-nav justify-content-end mr-auto mt-2 mt-lg-0">
                   <li class="nav-item active">
-                      <a class="nav-item nav-link font-weight-bold active" runat="server" href="~/" >Home</a>
+                      <a class="nav-item nav-link font-weight-bold active" runat="server" href="~/WADefault" >Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/NewAdver">New Advertisement</a>
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WANewAdver">New Advertisement</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/Contact">Contact</a>
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAContact">Contact</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/Faq">FAQ</a>
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAFaq">FAQ</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/About">About</a>
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAAbout">About</a>
                   </li>
                 </ul>
                 <%--<label for="select" class="col-sm-2 col-form-label col-form-label-sm" >Region</label>--%>

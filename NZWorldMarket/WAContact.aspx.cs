@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace NZWorldMarket
 {
-    public partial class _Default : Page
+    public partial class WAContact : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

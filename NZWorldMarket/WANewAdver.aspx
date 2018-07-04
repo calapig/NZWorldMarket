@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NewAdver.aspx.cs" Inherits="NZWorldMarket.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebApp.Master" AutoEventWireup="true" CodeBehind="WANewAdver.aspx.cs" Inherits="NZWorldMarket.WANewAdver" %>
 <asp:Content ID="cNewAdver" ContentPlaceHolderID="MainContent" runat="server" >
 
     <div class="meContainer" >

@@ -10,7 +10,7 @@
 namespace NZWorldMarket {
     
     
-    public partial class SiteMaster {
+    public partial class WebAppMaster {
         
         /// <summary>
         /// ddlContinent control.

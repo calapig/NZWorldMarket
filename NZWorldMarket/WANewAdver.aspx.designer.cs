@@ -10,7 +10,7 @@
 namespace NZWorldMarket {
     
     
-    public partial class WebForm1 {
+    public partial class WANewAdver {
         
         /// <summary>
         /// txtFirstName control.
