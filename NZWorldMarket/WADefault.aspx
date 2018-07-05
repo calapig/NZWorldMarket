@@ -1,42 +1,40 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/WebApp.Master" AutoEventWireup="true" CodeBehind="WADefault.aspx.cs" Inherits="NZWorldMarket.WADefault" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        
+          <asp:Repeater ID="rpCarousel" runat="server" DataSourceID="dsFvCarousel">
+              <ItemTemplate>
+                  <div class="carousel-item">
+                      <asp:Image ID="imgAdver" runat="server" style="max-width: 800px; height: auto" ImageUrl='<%# Eval("PhotoId", "CommonResources/ShowImage.ashx?photoId={0}") %>' class="d-block w-100" AlternateText="First slide" />
+                      <div class="carousel-caption d-none d-md-block">
+                        <%--<hr class="my-1">--%>
+                        <h5><asp:Label ID="lbTitle" runat="server" CssClass="badge badge-dark" Text='<%# Eval("Title") %>' ></asp:Label></h5>
+                        <p><asp:Label ID="lbOverview" runat="server" CssClass="badge badge-secondary" Text='<%# Eval("Overview") %>' ></asp:Label></p>
+                      </div>
+                  </div>
+              </ItemTemplate>
+          </asp:Repeater>
+         
+          <asp:SqlDataSource runat="server" ID="dsFvCarousel" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT TOP (3) Id, Title, Overview, AdvertTypeId, PhotoId, Modified FROM Advertisement ORDER BY Modified DESC"></asp:SqlDataSource>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
-
+<script>
+    $(".carousel-inner div:first-child").toggleClass("active");
+</script>
 </asp:Content>
