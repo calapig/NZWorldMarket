@@ -245,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="CommonResources\EmailUtility.cs" />
     <Compile Include="DAL\AdverItemDAL.cs" />
     <Compile Include="WAAbout.aspx.cs">
       <DependentUpon>WAAbout.aspx</DependentUpon>

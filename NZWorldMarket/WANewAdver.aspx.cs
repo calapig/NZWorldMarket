@@ -1,4 +1,5 @@
-﻿using NZWorldMarket.DAL;
+﻿using NZWorldMarket.CommonResources;
+using NZWorldMarket.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,14 @@ namespace NZWorldMarket
 
             AdvertisementDAL adver = new AdvertisementDAL();
             Int64 adverId = adver.RegisterAdvertisement(userId, int.Parse(ddlRegion.SelectedValue), ddlTypeAdv.SelectedValue, txtTitle.Text, txtOverview.Text, txtDeadLine.Text);
+
+            string url = "http://localhost:62943/CMAdverManager?AdverId=" + adverId.ToString();
+
+            AdvertisementDAL advertisement = new AdvertisementDAL();
+            advertisement.UpdateURL(adverId, url);
+
+            //EmailUtility email = new EmailUtility();
+            //email.SendEmail(url);
 
         }
     }

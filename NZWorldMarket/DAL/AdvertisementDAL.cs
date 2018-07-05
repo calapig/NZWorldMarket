@@ -67,5 +67,22 @@ namespace NZWorldMarket.DAL
 
             return num_updates;
         }
+
+        internal int UpdateURL(long advertId, string url)
+        {
+            string select = @"UPDATE Advertisement SET URL = @Url WHERE Id = @ID";
+
+            SqlCommand cmd = new SqlCommand(select, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@Url", url);
+            cmd.Parameters.AddWithValue("@ID", advertId);
+
+            int num_updates = cmd.ExecuteNonQuery();
+
+            this.CloseAdvertisementDAL();
+
+            return num_updates;
+        }
+
     }
 }
