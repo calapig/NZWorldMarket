@@ -34,7 +34,38 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-<script>
-    $(".carousel-inner div:first-child").toggleClass("active");
-</script>
+
+    <div class="card-deck" style="padding-top: 15px">
+
+    <asp:DataList ID="dlAdvertisements" runat="server" DataKeyField="Id" DataSourceID="dsDlAdvertisements" RepeatColumns="3" OnItemDataBound="dlAdvertisements_ItemDataBound" OnItemCommand="dlAdvertisements_ItemCommand">
+        <ItemTemplate>
+            <div class="card border-primary text-white bg-dark mb-3">
+                <div class="card-header bg-primary"><b><%# Eval("RegionName") %></b></div>
+                 <asp:Image ID="advImage" runat="server" CssClass="rounded mx-auto d-block" ImageUrl='<%# Eval("PhotoId", "CommonResources/ShowImage.ashx?photoId={0}") %>' Style="max-width: 100%; height: auto;" />
+                 <%--<div class="photoItemContainer" ></div>--%>
+                <div class="card-body">
+                    <h5 class="card-title"><b><%# Eval("Title") %></b></h5>
+                    <p class="card-text">'<%# Eval("Overview") %>'</p>
+                    <asp:Button ID="btnDetail" runat="server" CssClass="btn btn-info" Text="go to Detail" CommandName="Detail" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="btnOrderNow" runat="server" CssClass="btn btn-success" Text="order Now!" CommandName="Order" />
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated <%# Eval("Modified") %></small>
+                </div>
+            </div>
+        </ItemTemplate>
+    </asp:DataList>
+
+    </div>
+
+    <asp:SqlDataSource runat="server" ID="dsDlAdvertisements" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' 
+        SelectCommand="SELECT Advertisement.Id, Advertisement.UserId, Advertisement.RegionId, Advertisement.AdvertTypeId, 
+        Advertisement.Title, Advertisement.Overview, Advertisement.URL, Advertisement.StyleSheet, Advertisement.PostDeadLine, 
+        Advertisement.SearchTags, Advertisement.PhotoId, Advertisement.Active, Advertisement.Creation, Advertisement.Modified, 
+        Region.Name AS RegionName FROM Advertisement INNER JOIN Region ON Advertisement.RegionId = Region.Id 
+        ORDER BY Advertisement.Modified DESC, Advertisement.PostDeadLine"></asp:SqlDataSource>
+    <script>
+        $(".carousel-inner div:first-child").toggleClass("active");
+    </script>
+
 </asp:Content>

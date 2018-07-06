@@ -97,6 +97,9 @@
                     <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WANewAdver">New Advertisement</a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WACart">Cart</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAContact">Contact</a>
                   </li>
                   <li class="nav-item">

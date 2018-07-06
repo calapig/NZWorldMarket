@@ -146,32 +146,36 @@
           
       </div>
 
-      <div class="tab-pane fade " id="detail" style="padding:10px" >
+      <div class="tab-pane fade active show" id="detail" style="padding:10px" >
           <asp:DetailsView ID="dvItemsAdv" runat="server" Height="50px" Width="355px" AllowPaging="True" PagerSettings-Mode="Numeric"  
               PagerStyle-Font-Size="XX-Large" PagerStyle-Font-Bold="true"
-              AutoGenerateRows="False" DataKeyNames="Id" DataSourceID="dsDvItemsAdv" BorderStyle="None" OnDataBound="dvItemsAdv_DataBound">
+              AutoGenerateRows="False" DataKeyNames="Id" DataSourceID="dsDvItemsAdv" BorderStyle="None" OnDataBound="dvItemsAdv_DataBound" 
+              OnItemCommand="dvItemsAdv_ItemCommand" OnItemInserted="dvItemsAdv_ItemInserted">
               <Fields>
                   <asp:BoundField DataField="Id" Visible="false" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                   <asp:BoundField DataField="AdvertisementId" Visible="false" HeaderText="AdvertisementId" InsertVisible="False" ReadOnly="True" SortExpression="AdvertisementId" />
                   <asp:BoundField DataField="OrderCode" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Priority" SortExpression="OrderCode" />
                   <asp:BoundField DataField="Name" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Name" SortExpression="Name" />
                   <asp:TemplateField HeaderText="Type" HeaderStyle-CssClass="input-group-text" >
+                      <ItemTemplate>
+                          <asp:Label ID="lbType" runat="server" Text='<%# Bind("TypeName") %>' ></asp:Label>
+                      </ItemTemplate>
                       <InsertItemTemplate>
-                        <asp:DropDownList ID="DdlItemType" runat="server" Width="100%" CssClass="custom-select-sm" SelectedValue='<%# Bind("ItemType") %>' >
-                            <asp:ListItem Value="NA" >-- Select --</asp:ListItem>
-                            <asp:ListItem Value="PR" >Product</asp:ListItem>
-                            <asp:ListItem Value="SV" >Service</asp:ListItem>
-                        </asp:DropDownList>
+                          <asp:DropDownList ID="DdlItemType" runat="server" Width="100%" CssClass="custom-select-sm" SelectedValue='<%# Bind("ItemType") %>' AppendDataBoundItems="true" DataSourceID="dsDdlItemType" DataTextField="Name" DataValueField="Id">
+                              <asp:ListItem Value="NA">-- Select --</asp:ListItem>
+                          </asp:DropDownList>
+                          <asp:SqlDataSource runat="server" ID="dsDdlItemType" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT * FROM [ItemType] ORDER BY [Name]"></asp:SqlDataSource>
                       </InsertItemTemplate>
                       <EditItemTemplate>
-                        <asp:DropDownList ID="DdlItemType" runat="server" Width="100%" CssClass="custom-select-sm" SelectedValue='<%# Bind("ItemType") %>' >
+                          <asp:DropDownList ID="DdlItemTypeE" runat="server" Width="100%" CssClass="custom-select-sm" SelectedValue='<%# Bind("ItemType") %>' AppendDataBoundItems="true" DataSourceID="dsDdlItemType" DataTextField="Name" DataValueField="Id">
                             <asp:ListItem Value="NA" >-- Select --</asp:ListItem>
-                            <asp:ListItem Value="PR" >Product</asp:ListItem>
-                            <asp:ListItem Value="SV" >Service</asp:ListItem>
                         </asp:DropDownList>
                       </EditItemTemplate>
                   </asp:TemplateField>
                   <asp:TemplateField HeaderText="Category" HeaderStyle-CssClass="input-group-text" >
+                      <ItemTemplate>
+                          <asp:Label ID="lbCategory" runat="server" Text='<%# Bind("CategoryName") %>' ></asp:Label>
+                      </ItemTemplate>
                       <InsertItemTemplate>
                           <asp:DropDownList ID="DdlAdvertItemCategoryId" runat="server" Width="100%" CssClass="custom-select-sm" DataSourceID="dsDdlAdvertItemCategoryId" DataTextField="Name" DataValueField="Id" SelectedValue='<%# Bind("AdvertItemCategoryId") %>' AppendDataBoundItems="True" >
                               <asp:ListItem Value="-1" >-- Select --</asp:ListItem>
@@ -192,6 +196,9 @@
                       </EditItemTemplate>
                   </asp:TemplateField>
                   <asp:TemplateField HeaderText="Country" HeaderStyle-CssClass="input-group-text" >
+                      <ItemTemplate>
+                          <asp:Label ID="lbCountry" runat="server" Text='<%# Bind("CountryName") %>' ></asp:Label>
+                      </ItemTemplate>
                       <InsertItemTemplate>
                         <asp:DropDownList ID="DdlCountry" runat="server" Width="100%" class="custom-select-sm" DataSourceID="dsDdlCountry" DataTextField="Name" DataValueField="Id" SelectedValue='<%# Bind("CountryId") %>' AppendDataBoundItems="True" >
                             <asp:ListItem Selected="True" Value="-1" >-- Select --</asp:ListItem>
@@ -212,6 +219,9 @@
                       </EditItemTemplate>
                   </asp:TemplateField>
                   <asp:TemplateField HeaderText="Continent" HeaderStyle-CssClass="input-group-text" >
+                      <ItemTemplate>
+                          <asp:Label ID="lbContinent" runat="server" Text='<%# Bind("ContinentName") %>' ></asp:Label>
+                      </ItemTemplate>
                       <InsertItemTemplate>
                           <asp:DropDownList ID="ddlContinent" runat="server" Width="100%" class="custom-select-sm" DataSourceID="dsDdlContinent" DataTextField="Name" DataValueField="Id" SelectedValue='<%# Bind("ContinentId") %>' AppendDataBoundItems="True" >
                             <asp:ListItem Selected="True" Value="-1" >-- Select --</asp:ListItem>
@@ -229,7 +239,7 @@
                   <asp:BoundField DataField="Stock" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Stock" SortExpression="Stock" />
                   <asp:BoundField DataField="Description" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Description" SortExpression="Description" />
                   <asp:BoundField DataField="SearchTags" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="SearchTags" SortExpression="SearchTags" />
-                  <asp:BoundField DataField="PhotoId" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PhotoId" SortExpression="PhotoId" />
+                  <asp:BoundField DataField="PhotoId" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PhotoId" SortExpression="PhotoId" Visible="false" />
                   <asp:CheckBoxField DataField="Active" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="Active" SortExpression="Active" />
                   <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" ButtonType="Button"  ControlStyle-CssClass="btn btn-primary" />
               </Fields>
@@ -237,7 +247,26 @@
                    <asp:LinkButton ID="lnkNewItem" runat="server" CssClass="btn btn-outline-info" onclick="lnkNewItem_Click">No records found click here to insert one</asp:LinkButton>
               </EmptyDataTemplate>
           </asp:DetailsView>
-          <asp:SqlDataSource ID="dsDvItemsAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" DeleteCommand="DELETE FROM [AdvertItem] WHERE [Id] = @Id" InsertCommand="INSERT INTO [AdvertItem] ([OrderCode], [Name], [AdvertisementId], [ItemType], [AdvertItemCategoryId], [CountryId], [ContinentId], [Price], [InitialStock], [Stock], [Description], [SearchTags], [PhotoId], [Active]) VALUES (@OrderCode, @Name, @AdvertisementId, @ItemType, @AdvertItemCategoryId, @CountryId, @ContinentId, @Price, @InitialStock, @Stock, @Description, @SearchTags, @PhotoId, @Active)" SelectCommand="SELECT * FROM [AdvertItem] WHERE ([AdvertisementId] = @AdvertisementId) ORDER BY [OrderCode]" UpdateCommand="UPDATE [AdvertItem] SET [OrderCode] = @OrderCode, [Name] = @Name, [AdvertisementId] = @AdvertisementId, [ItemType] = @ItemType, [AdvertItemCategoryId] = @AdvertItemCategoryId, [CountryId] = @CountryId, [ContinentId] = @ContinentId, [Price] = @Price, [InitialStock] = @InitialStock, [Stock] = @Stock, [Description] = @Description, [SearchTags] = @SearchTags, [PhotoId] = @PhotoId, [Active] = @Active WHERE [Id] = @Id">
+          <asp:SqlDataSource ID="dsDvItemsAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" 
+              DeleteCommand="DELETE FROM [AdvertItem] WHERE [Id] = @Id" 
+              InsertCommand="INSERT INTO [AdvertItem] ([OrderCode], [Name], [AdvertisementId], [ItemType], [AdvertItemCategoryId], [CountryId], 
+              [ContinentId], [Price], [InitialStock], [Stock], [Description], [SearchTags], [PhotoId], [Active]) 
+              VALUES (@OrderCode, @Name, @AdvertisementId, @ItemType, @AdvertItemCategoryId, @CountryId, @ContinentId, @Price, @InitialStock, 
+              @Stock, @Description, @SearchTags, @PhotoId, @Active)" 
+              SelectCommand="SELECT [AdvertItem].[Id],[AdvertItem].[OrderCode],[AdvertItem].[Name],[AdvertisementId],[ItemType],[AdvertItemCategoryId],
+              [AdvertItem].[CountryId],[AdvertItem].[ContinentId],[Price],[InitialStock],[Stock],[Description],[SearchTags],[PhotoId],
+              [AdvertItem].[Active],[ItemType].[Name] TypeName, [AdvertItemCategory].Name CategoryName,[Country].Name CountryName,
+              [Continent].Name ContinentName
+              FROM [AdvertItem] INNER JOIN [ItemType] ON [AdvertItem].[ItemType] = [ItemType].[Id] 
+              INNER JOIN [AdvertItemCategory] ON [AdvertItem].AdvertItemCategoryId = [AdvertItemCategory].Id
+              INNER JOIN [Country] ON [AdvertItem].[CountryId] = [Country].Id
+			  INNER JOIN [Continent] ON [AdvertItem].[ContinentId] = [Continent].Id
+              WHERE ([AdvertisementId] = @AdvertisementId) 
+              ORDER BY [OrderCode]" 
+              UpdateCommand="UPDATE [AdvertItem] SET [OrderCode] = @OrderCode, [Name] = @Name, [AdvertisementId] = @AdvertisementId, 
+              [ItemType] = @ItemType, [AdvertItemCategoryId] = @AdvertItemCategoryId, [CountryId] = @CountryId, [ContinentId] = @ContinentId, 
+              [Price] = @Price, [InitialStock] = @InitialStock, [Stock] = @Stock, [Description] = @Description, [SearchTags] = @SearchTags, 
+              [PhotoId] = @PhotoId, [Active] = @Active WHERE [Id] = @Id">
               <DeleteParameters>
                   <asp:Parameter Name="Id" Type="Int64" />
               </DeleteParameters>
@@ -280,7 +309,7 @@
           </asp:SqlDataSource>
       </div>
 
-      <div class="tab-pane fade active show" id="photos" style="padding:10px" >
+      <div class="tab-pane fade" id="photos" style="padding:10px" >
           <div class="form-group">
 
             <div class="input-group mb-3">

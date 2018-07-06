@@ -21,6 +21,8 @@ namespace NZWorldMarket
             }
         }
 
+        #region InfoCard
+
         private void LoadAdvertisementMainImage()
         {
             AdvertisementDAL adv = new AdvertisementDAL();
@@ -32,24 +34,6 @@ namespace NZWorldMarket
                 advImage.ImageUrl = "CommonResources/ShowImage.ashx?photoId=" + photoId.ToString();
             }
         }
-
-        protected void lnkNewItem_Click(Object sender, EventArgs e)
-        {
-            dvItemsAdv.ChangeMode(DetailsViewMode.Insert);
-            dvItemsAdv.BorderStyle = BorderStyle.Solid;
-
-        }
-
-        protected void dvItemsAdv_DataBound(object sender, EventArgs e)
-        {
-            //((HiddenField)dvItemsAdv.FindControl("AdvertisementId")).Value = Request.QueryString["AdverId"] ?? "0";
-            //if (dvItemsAdv.CurrentMode == DetailsViewMode.Insert)
-            //{
-            //    TextBox adverId = (TextBox)dvItemsAdv.Rows[1].Cells[1].Controls[1];
-            //    adverId.Text = hdfAdverId.Value;
-            //}
-        }
-
         protected void btnUploadPhotoAdv_Click(object sender, EventArgs e)
         {
             if (!fuPhotoAdv.HasFile)
@@ -91,6 +75,42 @@ namespace NZWorldMarket
                 }
             }
         }
+
+        #endregion
+
+        #region Items
+
+        protected void lnkNewItem_Click(Object sender, EventArgs e)
+        {
+            dvItemsAdv.ChangeMode(DetailsViewMode.Insert);
+            dvItemsAdv.BorderStyle = BorderStyle.Solid;
+
+        }
+
+        protected void dvItemsAdv_DataBound(object sender, EventArgs e)
+        {
+            //((HiddenField)dvItemsAdv.FindControl("AdvertisementId")).Value = Request.QueryString["AdverId"] ?? "0";
+            //if (dvItemsAdv.CurrentMode == DetailsViewMode.Insert)
+            //{
+            //    TextBox adverId = (TextBox)dvItemsAdv.Rows[1].Cells[1].Controls[1];
+            //    adverId.Text = hdfAdverId.Value;
+            //}
+        }
+
+        protected void dvItemsAdv_ItemCommand(object sender, DetailsViewCommandEventArgs e)
+        {
+            
+        }
+
+        protected void dvItemsAdv_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
+        {
+            //DdlItemsAdv.Items.Clear();
+            DdlItemsAdv.DataBind();
+        }
+
+        #endregion
+
+        #region Photos
 
         protected void btnUploadPhoto_Click(object sender, EventArgs e)
         {
@@ -155,5 +175,8 @@ namespace NZWorldMarket
 
             DlPhotos.DataBind();
         }
+
+        #endregion
+
     }
 }
