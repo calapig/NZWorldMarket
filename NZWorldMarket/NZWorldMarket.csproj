@@ -194,7 +194,7 @@
     <Content Include="CommonResources\ShowImage.ashx" />
     <Content Include="WAFaq.aspx" />
     <Content Include="WACart.aspx" />
-    <Content Include="WADetail.aspx" />
+    <Content Include="WAItemDetail.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -341,12 +341,12 @@
     <Compile Include="WACart.aspx.designer.cs">
       <DependentUpon>WACart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WADetail.aspx.cs">
-      <DependentUpon>WADetail.aspx</DependentUpon>
+    <Compile Include="WAItemDetail.aspx.cs">
+      <DependentUpon>WAItemDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WADetail.aspx.designer.cs">
-      <DependentUpon>WADetail.aspx</DependentUpon>
+    <Compile Include="WAItemDetail.aspx.designer.cs">
+      <DependentUpon>WAItemDetail.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

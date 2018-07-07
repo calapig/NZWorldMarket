@@ -33,7 +33,7 @@ namespace NZWorldMarket
             switch (e.CommandName)
             {
                 case "Detail":
-                    Response.Redirect("WADetail.aspx?AdvId=" + e.CommandArgument.ToString());
+                    Response.Redirect("WAItemDetail.aspx?AdverId=" + e.CommandArgument.ToString());
                     break;
                 case "Order":
                     // Get info of the item selected to adding cart
