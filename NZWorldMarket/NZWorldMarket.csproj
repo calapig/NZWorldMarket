@@ -247,8 +247,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="BLL\CartBLL.cs" />
     <Compile Include="CommonResources\EmailUtility.cs" />
     <Compile Include="DAL\AdverItemDAL.cs" />
+    <Compile Include="DAL\CartItemDAL.cs" />
     <Compile Include="WAAbout.aspx.cs">
       <DependentUpon>WAAbout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

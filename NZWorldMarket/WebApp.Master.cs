@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NZWorldMarket.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,8 @@ namespace NZWorldMarket
             if (!IsPostBack) // on initial load 
             {
                 Page.Title = "NZ World Market";
-            }   
+            }
+            cartItems.InnerText = " (" + CartBLL.GetCart().Count.ToString() + ")";
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NZWorldMarket.BLL;
+using NZWorldMarket.DAL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,7 +14,8 @@ namespace NZWorldMarket
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack) {
+            }
         }
 
         protected void dlAdvertisements_ItemDataBound(object sender, DataListItemEventArgs e)
@@ -33,6 +36,25 @@ namespace NZWorldMarket
                     Response.Redirect("WADetail.aspx?AdvId=" + e.CommandArgument.ToString());
                     break;
                 case "Order":
+                    // Get info of the item selected to adding cart
+                    AdvertItemDAL advItem = new AdvertItemDAL();
+                    advItem.GetAdvertItem(e.CommandArgument.ToString());
+
+                    //get cart from session state and selected item from cart 
+                    CartBLL cart = CartBLL.GetCart();
+                    CartItemDAL cartItem = cart[advItem.id];
+
+                    // Increases the quantity if exists the item in the cart or add 
+                    if (cartItem == null)
+                    {
+                        cartItem = new CartItemDAL(advItem, 1);
+                        cart.AddItem(cartItem);
+                    }
+                    else
+                    {
+                        cartItem.AddQuantity();
+                    }
+
                     Response.Redirect("WACart.aspx");
                     break;
                 //case "":

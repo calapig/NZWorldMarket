@@ -28,6 +28,16 @@ body {
     flex-wrap: wrap;
 }
 
+/*span.icon {
+    font-family: 'Glyphicons Halflings';
+}*/
+
+/*span.icon:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\f015";
+}*/
+
+
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,

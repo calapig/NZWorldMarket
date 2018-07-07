@@ -60,7 +60,7 @@ namespace NZWorldMarket
                     if (chkMainPhoto.Checked)
                     {
                         long advItemId = long.Parse(DdlItemsAdv.SelectedValue);
-                        AdverItemDAL item = new AdverItemDAL();
+                        AdvertItemDAL item = new AdvertItemDAL();
                         item.UpdatePhotoId(advItemId, photoId);
                     }
 
@@ -138,7 +138,7 @@ namespace NZWorldMarket
                     if (chkMainPhoto.Checked)
                     {
                         long advItemId = long.Parse(DdlItemsAdv.SelectedValue);
-                        AdverItemDAL item = new AdverItemDAL();
+                        AdvertItemDAL item = new AdvertItemDAL();
                         item.UpdatePhotoId(advItemId, photoId);
                     }
 
@@ -170,7 +170,7 @@ namespace NZWorldMarket
         {
             long photoId = long.Parse(((HiddenField)((LinkButton)sender).Parent.FindControl("hdfPhotoId")).Value);
             long advItemId = long.Parse(DdlItemsAdv.SelectedValue);
-            AdverItemDAL item = new AdverItemDAL();
+            AdvertItemDAL item = new AdvertItemDAL();
             item.UpdatePhotoId(advItemId, photoId);
 
             DlPhotos.DataBind();

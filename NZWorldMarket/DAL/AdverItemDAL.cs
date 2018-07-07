@@ -8,11 +8,22 @@ using System.Web;
 
 namespace NZWorldMarket.DAL
 {
-    public class AdverItemDAL
+    public class AdvertItemDAL
     {
+        public long id { get; set; }
+        public string name { get; set; }
+
+        public long advertisementId { get; set; }
+
+        public string itemType { get; set; }
+        public decimal price { get; set; }
+        public int? initialStock { get; set; }
+        public int? stock { get; set; }
+        public long photoId { get; set; }
+        
         private SqlConnection conn = null;
 
-        public AdverItemDAL()
+        public AdvertItemDAL()
         {
             try
             {
@@ -25,7 +36,7 @@ namespace NZWorldMarket.DAL
                 throw new Exception();
             }
         }
-
+        
         public void CloseAdverItemDAL()
         {
             conn.Close();
@@ -46,5 +57,29 @@ namespace NZWorldMarket.DAL
 
             return num_updates;
         }
+
+        internal void GetAdvertItem(string advertId)
+        {
+            String query = @"SELECT id, name, advertisementId, itemType, price, initialStock, stock, photoId 
+                             FROM AdvertItem WHERE AdvertisementId = " + advertId ;
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, conn);
+
+            DataTable dt = new DataTable();
+            int counter = sqlDataAdapter.Fill(dt);
+
+            if (counter == 1)
+            {
+                id = (long)dt.Rows[0]["id"];
+                name = (string)dt.Rows[0]["name"];
+                advertisementId = (long)dt.Rows[0]["advertisementId"];
+                itemType = (string)dt.Rows[0]["itemType"];
+                price = (decimal)dt.Rows[0]["price"];
+                initialStock = dt.Rows[0]["initialStock"] == DBNull.Value ? (int?) null : (int?) dt.Rows[0]["initialStock"];
+                stock = dt.Rows[0]["stock"] == DBNull.Value ? (int?)null : (int?)dt.Rows[0]["stock"];
+                photoId = (long)dt.Rows[0]["photoId"];
+            }
+        }
+
+        
     }
 }

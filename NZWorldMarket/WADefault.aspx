@@ -47,7 +47,7 @@
                     <h5 class="card-title"><b><%# Eval("Title") %></b></h5>
                     <p class="card-text">'<%# Eval("Overview") %>'</p>
                     <asp:Button ID="btnDetail" runat="server" CssClass="btn btn-info" Text="go to Detail" CommandName="Detail" CommandArgument='<%# Eval("Id") %>' />
-                    <asp:Button ID="btnOrderNow" runat="server" CssClass="btn btn-success" Text="order Now!" CommandName="Order" />
+                    <asp:Button ID="btnOrderNow" runat="server" CssClass="btn btn-success" Text="order Now!" CommandName="Order" CommandArgument='<%# Eval("Id") %>' />
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Last updated <%# Eval("Modified") %></small>
