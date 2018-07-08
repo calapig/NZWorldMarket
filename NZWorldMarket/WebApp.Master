@@ -72,12 +72,12 @@
                   <li class="nav-item active">
                   </li>
                 </ul>
-                <asp:DropDownList ID="ddlContinent" runat="server" class="custom-select custom-select-sm mr-sm-2" DataSourceID="dsDdlContinent" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="True" >
+                <asp:DropDownList ID="ddlContinent" runat="server" class="custom-select custom-select-sm mr-sm-2" DataSourceID="dsDdlContinent" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddlContinent_SelectedIndexChanged" >
                     <asp:ListItem Selected="True" Value="-1" >Continent</asp:ListItem>
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="dsDdlContinent" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT Id, Name, OrderCode, Active FROM Continent WHERE (Active = 1) ORDER BY OrderCode"></asp:SqlDataSource>
-                <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search" aria-describedby="inputGroupPrepend2" > 
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" >Search</button>
+                <input id="inputSearch" runat="server" class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search" aria-describedby="inputGroupPrepend2" > 
+                <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-outline-secondary my-2 my-sm-0" Text="Search" />
             </div>
 
         </nav>
@@ -119,8 +119,8 @@
                     <span id="cartItems" runat="server"></span>
                 </a>
                 <%--<label for="select" class="col-sm-2 col-form-label col-form-label-sm" >Region</label>--%>
-                <asp:DropDownList ID="ddlRegion" runat="server" class="custom-select custom-select-sm" DataSourceID="dsDdlRegion" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="true" >
-                    <asp:ListItem Selected="True" Value="-1" >Region</asp:ListItem>
+                <asp:DropDownList ID="ddlRegion" runat="server" class="custom-select custom-select-sm" DataSourceID="dsDdlRegion" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged" >
+                    <asp:ListItem Selected="True" Value="0" >Region</asp:ListItem>
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="dsDdlRegion" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" SelectCommand="SELECT [Id], [Name] FROM [Region] WHERE ([Active] = @Active) ORDER BY [OrderCode]">
                     <SelectParameters>

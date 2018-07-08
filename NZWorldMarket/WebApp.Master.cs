@@ -19,5 +19,21 @@ namespace NZWorldMarket
             }
             cartItems.InnerText = " (" + CartBLL.GetCart().Count.ToString() + ")";
         }
+
+        protected void ddlRegion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Session["RegionId"] = ddlRegion.SelectedValue;
+            ((HiddenField)this.MainContent.FindControl("HdfRegionId")).Value = ddlRegion.SelectedValue;
+        }
+
+        protected void ddlContinent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ((HiddenField)this.MainContent.FindControl("HdfContinentId")).Value = ddlContinent.SelectedValue;
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            ((HiddenField)this.MainContent.FindControl("HdfKeySearch")).Value = inputSearch.Value ;
+        }
     }
 }

@@ -16,6 +16,8 @@ namespace NZWorldMarket
         {
             if (!IsPostBack) {
             }
+
+            //HdfRegionId.Value = Session["RegionId"].ToString();
         }
 
         protected void dlAdvertisements_ItemDataBound(object sender, DataListItemEventArgs e)
@@ -65,5 +67,7 @@ namespace NZWorldMarket
                     break;
             }
         }
+
+    
     }
 }

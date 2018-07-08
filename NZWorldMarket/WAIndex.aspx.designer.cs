@@ -13,6 +13,33 @@ namespace NZWorldMarket {
     public partial class WAIndex {
         
         /// <summary>
+        /// HdfRegionId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdfRegionId;
+        
+        /// <summary>
+        /// HdfContinentId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdfContinentId;
+        
+        /// <summary>
+        /// HdfKeySearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdfKeySearch;
+        
+        /// <summary>
         /// rpCarousel control.
         /// </summary>
         /// <remarks>

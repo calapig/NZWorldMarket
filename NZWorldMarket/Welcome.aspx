@@ -51,7 +51,7 @@
                 <div class="vertical-centerButton">
                     <asp:LinkButton ID="btnWebApp" runat="server" CssClass="btn btn-primary btn-lg btn-block" Text="Go to Customer Web Application" PostBackUrl="~/WAIndex.aspx" />
                 </div>
-                <div class="vertical-centerButton">
+                <div class="vertical-centerButton ">
                     <asp:LinkButton ID="btnContentMg" runat="server" CssClass="btn btn-warning btn-lg btn-block" Text="Go to Content Manager System" PostBackUrl="~/CMIndex.aspx" />
                 </div>
             </div>

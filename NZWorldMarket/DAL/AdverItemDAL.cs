@@ -74,9 +74,9 @@ namespace NZWorldMarket.DAL
                 advertisementId = (long)dt.Rows[0]["advertisementId"];
                 itemType = (string)dt.Rows[0]["itemType"];
                 price = (decimal)dt.Rows[0]["price"];
-                initialStock = dt.Rows[0]["initialStock"] == DBNull.Value ? (int?) null : (int?) dt.Rows[0]["initialStock"];
-                stock = dt.Rows[0]["stock"] == DBNull.Value ? (int?)null : (int?)dt.Rows[0]["stock"];
-                photoId = (long)dt.Rows[0]["photoId"];
+                initialStock = dt.Rows[0]["initialStock"] == DBNull.Value ? (byte?) null : (byte?) dt.Rows[0]["initialStock"];
+                stock = dt.Rows[0]["stock"] == DBNull.Value ? (byte?)null : (byte?)dt.Rows[0]["stock"];
+                photoId = dt.Rows[0]["photoId"] == DBNull.Value ? 0 : (long)dt.Rows[0]["stock"];
             }
         }
 

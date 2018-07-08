@@ -1,7 +1,9 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/WebApp.Master" AutoEventWireup="true" CodeBehind="WAIndex.aspx.cs" Inherits="NZWorldMarket.WAIndex" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server" >
-
+    <asp:HiddenField ID="HdfRegionId" runat="server" Value="-1" />
+    <asp:HiddenField ID="HdfContinentId" runat="server" Value="-1" />
+    <asp:HiddenField ID="HdfKeySearch" runat="server" Value="" />
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -57,13 +59,18 @@
     </asp:DataList>
 
     </div>
-
-    <asp:SqlDataSource runat="server" ID="dsDlAdvertisements" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' 
-        SelectCommand="SELECT Advertisement.Id, Advertisement.UserId, Advertisement.RegionId, Advertisement.AdvertTypeId, 
+    <asp:SqlDataSource runat="server" ID="dsDlAdvertisements" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>'
+          SelectCommand="SELECT Advertisement.Id, Advertisement.UserId, Advertisement.RegionId, Advertisement.AdvertTypeId, 
         Advertisement.Title, Advertisement.Overview, Advertisement.URL, Advertisement.StyleSheet, Advertisement.PostDeadLine, 
         Advertisement.SearchTags, Advertisement.PhotoId, Advertisement.Active, Advertisement.Creation, Advertisement.Modified, 
         Region.Name AS RegionName FROM Advertisement INNER JOIN Region ON Advertisement.RegionId = Region.Id 
-        ORDER BY Advertisement.Modified DESC, Advertisement.PostDeadLine"></asp:SqlDataSource>
+        WHERE Advertisement.RegionId = (CASE WHEN @RegionId = -1 THEN Advertisement.RegionId ELSE @RegionId END)
+        ORDER BY Advertisement.Modified DESC, Advertisement.PostDeadLine">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="HdfRegionId" PropertyName="Value" Name="RegionId"></asp:ControlParameter>
+            
+        </SelectParameters>
+    </asp:SqlDataSource>
     <script>
         $(".carousel-inner div:first-child").toggleClass("active");
     </script>
