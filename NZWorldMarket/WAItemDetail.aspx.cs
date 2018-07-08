@@ -1,4 +1,5 @@
-﻿using NZWorldMarket.DAL;
+﻿using NZWorldMarket.BLL;
+using NZWorldMarket.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -37,6 +38,44 @@ namespace NZWorldMarket
             lblDescription.Text = dv.Table.Rows[0]["Overview"].ToString();
 
             hdfDeadLine.Value = dv.Table.Rows[0]["PostDeadLine"].ToString();
+        }
+
+        protected void rpItemsAdvert_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "Order":
+                    // Get info of the item selected to adding cart
+                    AdvertItemDAL advItem = new AdvertItemDAL();
+                    advItem.GetAdvertItemById(e.CommandArgument.ToString());
+
+                    //get cart from session state and selected item from cart 
+                    CartBLL cart = CartBLL.GetCart();
+                    CartItemDAL cartItem = cart[advItem.id];
+
+                    string unitsBuy = ((TextBox)e.Item.FindControl("txtUnitsBuy")).Text;
+                    if (string.IsNullOrEmpty(unitsBuy))
+                    {
+                        Response.Redirect("WAItemDetail.aspx");
+                    }
+                    else {
+                        // Increases the quantity if exists the item in the cart or add 
+                        if (cartItem == null)
+                        {
+                            cartItem = new CartItemDAL(advItem, int.Parse(unitsBuy));
+                            cart.AddItem(cartItem);
+                        }
+                        else
+                        {
+                            cartItem.SetQuantity(1);
+                        }
+
+                        Response.Redirect("WACart.aspx");
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

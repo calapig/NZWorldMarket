@@ -90,7 +90,7 @@
 
         <div class="tab-pane fade" id="detail" style="padding:10px" >
 
-            <asp:Repeater ID="rpItemsAdvert" runat="server" DataSourceID="dsRpItemsAdvert">
+            <asp:Repeater ID="rpItemsAdvert" runat="server" DataSourceID="dsRpItemsAdvert" OnItemCommand="rpItemsAdvert_ItemCommand">
                 <HeaderTemplate>
                     <div class="table-responsive">
                         <table class="table" >

@@ -11,7 +11,7 @@ namespace NZWorldMarket.DAL
         public DateTime initRequestDate { get; set; }
         public DateTime finalRequestDate { get; set; }
         public int quantity { get; set; }
-        //public decimal price { get; set; }
+        public decimal price { get; set; }
 
         public AdvertItemDAL item { get; set; }
 
@@ -22,6 +22,7 @@ namespace NZWorldMarket.DAL
         {
             this.item = item;
             this.quantity = quantity;
+            this.price = item.price;
         }
 
         internal void AddQuantity()

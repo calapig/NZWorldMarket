@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace NZWorldMarket
 {
-    public partial class WADefault : Page
+    public partial class WAIndex : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,7 +38,7 @@ namespace NZWorldMarket
                 case "Order":
                     // Get info of the item selected to adding cart
                     AdvertItemDAL advItem = new AdvertItemDAL();
-                    advItem.GetAdvertItem(e.CommandArgument.ToString());
+                    advItem.GetAdvertItemByParent(e.CommandArgument.ToString());
 
                     //get cart from session state and selected item from cart 
                     CartBLL cart = CartBLL.GetCart();

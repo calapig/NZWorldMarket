@@ -144,7 +144,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="WADefault.aspx" />
+    <Content Include="WAIndex.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -195,6 +195,10 @@
     <Content Include="WAFaq.aspx" />
     <Content Include="WACart.aspx" />
     <Content Include="WAItemDetail.aspx" />
+    <Content Include="CMIndex.aspx" />
+    <Content Include="CMMasterCustomerManager.aspx" />
+    <Content Include="CMUserAdverts.aspx" />
+    <Content Include="Welcome.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -274,12 +278,12 @@
     <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="DAL\PhotoDAL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
-    <Compile Include="WADefault.aspx.cs">
-      <DependentUpon>WADefault.aspx</DependentUpon>
+    <Compile Include="WAIndex.aspx.cs">
+      <DependentUpon>WAIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WADefault.aspx.designer.cs">
-      <DependentUpon>WADefault.aspx</DependentUpon>
+    <Compile Include="WAIndex.aspx.designer.cs">
+      <DependentUpon>WAIndex.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -347,6 +351,34 @@
     </Compile>
     <Compile Include="WAItemDetail.aspx.designer.cs">
       <DependentUpon>WAItemDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMIndex.aspx.cs">
+      <DependentUpon>CMIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMIndex.aspx.designer.cs">
+      <DependentUpon>CMIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMMasterCustomerManager.aspx.cs">
+      <DependentUpon>CMMasterCustomerManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMMasterCustomerManager.aspx.designer.cs">
+      <DependentUpon>CMMasterCustomerManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMUserAdverts.aspx.cs">
+      <DependentUpon>CMUserAdverts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMUserAdverts.aspx.designer.cs">
+      <DependentUpon>CMUserAdverts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Welcome.aspx.cs">
+      <DependentUpon>Welcome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Welcome.aspx.designer.cs">
+      <DependentUpon>Welcome.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

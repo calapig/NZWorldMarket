@@ -62,7 +62,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <a class="navbar-brand" runat="server" href="~/">
+            <a class="navbar-brand" runat="server" href="~/WAIndex.aspx">
                 <%--NZWorldMarket.co--%>
                 <img src="Images/Logo/Logo16.JPG" width="200" height="50" alt="">
             </a>  
@@ -91,7 +91,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive" >
                 <ul class="navbar-nav justify-content-end mr-auto mt-2 mt-lg-0">
                   <li class="nav-item active">
-                      <a class="nav-item nav-link font-weight-bold active" runat="server" href="~/WADefault" >
+                      <a class="nav-item nav-link font-weight-bold active" runat="server" href="~/WAIndex" >
                           Home
                       </a>
                      <%-- <span class="glyphicon glyphicon-home"></span>

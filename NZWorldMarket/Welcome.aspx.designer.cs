@@ -10,42 +10,42 @@
 namespace NZWorldMarket {
     
     
-    public partial class WADefault {
+    public partial class Welcome {
         
         /// <summary>
-        /// rpCarousel control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpCarousel;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// dsFvCarousel control.
+        /// mainLogo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsFvCarousel;
+        protected global::System.Web.UI.WebControls.Image mainLogo;
         
         /// <summary>
-        /// dlAdvertisements control.
+        /// btnWebApp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlAdvertisements;
+        protected global::System.Web.UI.WebControls.LinkButton btnWebApp;
         
         /// <summary>
-        /// dsDlAdvertisements control.
+        /// btnContentMg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsDlAdvertisements;
+        protected global::System.Web.UI.WebControls.LinkButton btnContentMg;
     }
 }

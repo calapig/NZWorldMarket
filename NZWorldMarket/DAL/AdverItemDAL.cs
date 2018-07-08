@@ -58,7 +58,7 @@ namespace NZWorldMarket.DAL
             return num_updates;
         }
 
-        internal void GetAdvertItem(string advertId)
+        internal void GetAdvertItemByParent(string advertId)
         {
             String query = @"SELECT id, name, advertisementId, itemType, price, initialStock, stock, photoId 
                              FROM AdvertItem WHERE AdvertisementId = " + advertId ;
@@ -80,6 +80,26 @@ namespace NZWorldMarket.DAL
             }
         }
 
-        
+        internal void GetAdvertItemById(string itemAdvertId)
+        {
+            String query = @"SELECT id, name, advertisementId, itemType, price, initialStock, stock, photoId 
+                             FROM AdvertItem WHERE Id = " + itemAdvertId;
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, conn);
+
+            DataTable dt = new DataTable();
+            int counter = sqlDataAdapter.Fill(dt);
+
+            if (counter == 1)
+            {
+                id = (long)dt.Rows[0]["id"];
+                name = (string)dt.Rows[0]["name"];
+                advertisementId = (long)dt.Rows[0]["advertisementId"];
+                itemType = (string)dt.Rows[0]["itemType"];
+                price = (decimal)dt.Rows[0]["price"];
+                initialStock = dt.Rows[0]["initialStock"] == DBNull.Value ? (byte?)null : (byte?)dt.Rows[0]["initialStock"];
+                stock = dt.Rows[0]["stock"] == DBNull.Value ? (byte?)null : (byte?)dt.Rows[0]["stock"];
+                photoId = (long)dt.Rows[0]["photoId"];
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ContentManager.Master.cs" Inherits="NZWorldMarket.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ContentManager.Master.cs" Inherits="NZWorldMarket.ContentManager" %>
 
 <!DOCTYPE html>
 
@@ -47,7 +47,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <a class="navbar-brand" runat="server" href="~/">
+            <a class="navbar-brand" runat="server" href="~/CMIndex">
                 <%--NZWorldMarket.co--%>
                 <img src="Images/Logo/Logo16orange.JPG" width="200" height="50" alt="">
             </a>  
@@ -57,8 +57,8 @@
                   <li class="nav-item active">
                   </li>
                 </ul>
-                <a class="nav-item nav-link font-weight-bold" runat="server" href="~/NewAdver">Advertisement Manager</a>
-                <a class="nav-item nav-link font-weight-bold" runat="server" href="~/NewAdver">Master Customer Manager</a>
+                <a class="nav-item nav-link font-weight-bold text-light" runat="server" href="~/CMAdverManager">Advertisement Management System</a>
+                <a class="nav-item nav-link font-weight-bold text-light" runat="server" href="~/CMMasterCustomerManager">User Management System</a>
             </div>
 
         </nav>

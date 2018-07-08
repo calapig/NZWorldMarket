@@ -7,14 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace NZWorldMarket
 {
-    public partial class ContentManager : System.Web.UI.MasterPage
+    public partial class CMIndex : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) // on initial load 
-            {
-                
-            }
+
         }
     }
 }

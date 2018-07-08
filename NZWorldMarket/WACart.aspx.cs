@@ -23,28 +23,34 @@ namespace NZWorldMarket
 
         private void DisplayCart()
         {
-            // remove all current items from list control 
+            // remove all current items from list control
+
             lstCart.Items.Clear();
             // loop through cart and add each item's display value to the list 
             for (int i = 0; i < cart.Count; i++)
             {
                 lstCart.Items.Add(cart[i].Display());
             }
+
+            ////rpCart.DataSource = cart;
+            ////rpCart.DataBind();
         }
 
         protected void btnRemove_Click(object sender, EventArgs e)
         {
             // if cart contains items and user has selected an item... 
-            if (cart.Count > 0) {
+            if (cart.Count > 0)
+            {
                 if (lstCart.SelectedIndex > -1)
                 {
-                    // remove selected item from cart and re-display cart 
+                    //remove selected item from cart and re - display cart
                     cart.RemoveItemAt(lstCart.SelectedIndex);
                     this.DisplayCart();
                 }
                 else
-                { // if no item is selected, notify user 
-                        lblMessage.Text = "Please select the item to remove.";
+                {
+                    //if no item is selected, notify user
+                   lblMessage.Text = "Please select the item to remove.";
                 }
             }
         }
@@ -62,6 +68,10 @@ namespace NZWorldMarket
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void rpCart_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
         }
     }
 }

@@ -4,7 +4,32 @@
         <div class="col-sm-12"><h1>Your shopping cart</h1></div> 
             <div class="col-sm-6"><%--cart display column --%> 
                 <div class="form-group"> 
-                    <div class="col-sm-12"><asp:ListBox ID="lstCart" runat="server" CssClass="form-control"></asp:ListBox></div>
+                    <div class="col-sm-12">
+                        <asp:ListBox ID="lstCart" runat="server" CssClass="form-control" ></asp:ListBox>
+<%--                        <asp:Repeater ID="rpCart" runat="server" OnItemCommand="rpCart_ItemCommand">
+                        <HeaderTemplate>
+                            <div class="table-responsive">
+                                <table class="table" >
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                                    <tr class="bg-Primary" >
+                                        <td >
+                                            <asp:Label ID="lblItemName" runat="server" Text='<%# Eval("advertItemID") %>'></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Label ID="lblPrice" runat="server" Text='<%# Eval("price") %>'></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:TextBox ID="txtUnitsBuy" runat="server" Width="70px" Text='<%# Eval("quantity") %>'></asp:TextBox>
+                                        </td>
+                                    </tr>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                                </table>
+                            </div>
+                        </FooterTemplate>
+                    </asp:Repeater>--%>
+                    </div>
                 </div>
             </div>
         <div class="col-sm-6"><%--cart edit buttons column --%> 
@@ -25,7 +50,7 @@
             </div>
             <div class="form-group"><%--buttons --%> 
                 <div class="col-sm-12">
-                    <asp:Button ID="btnContinue" runat="server" PostBackUrl="~/WADefault.aspx" Text="Continue Shopping" CssClass="btn" />
+                    <asp:Button ID="btnContinue" runat="server" PostBackUrl="~/WAIndex.aspx" Text="Continue Shopping" CssClass="btn" />
                     <asp:Button ID="btnCheckOut" runat="server" Text="Check Out" OnClick="btnCheckOut_Click" CssClass="btn" />
                 </div> 
             </div> 
