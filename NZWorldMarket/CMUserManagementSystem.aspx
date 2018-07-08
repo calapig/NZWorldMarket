@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContentManager.Master" AutoEventWireup="true" CodeBehind="CMMasterCustomerManager.aspx.cs" Inherits="NZWorldMarket.CMMasterCustomerManager" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContentManager.Master" AutoEventWireup="true" CodeBehind="CMUserManagementSystem.aspx.cs" Inherits="NZWorldMarket.CMUserManagementSystem" %>
 <asp:Content ID="MasterCustomerMg" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="meContainer" >
-        <h1>User Advertisement Manager</h1>
+        <h1>User Management System</h1>
     </div>
 
     <asp:GridView ID="gvCustomerAdvert" runat="server" AutoGenerateColumns="False" DataKeyNames="Id,UserId" AllowSorting="true"
@@ -89,7 +89,7 @@
                 </EditItemTemplate>
                 <ItemTemplate>
                     <asp:LinkButton ID="lnkEdit" CssClass="btn btn-primary" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" CommandArgument='<%# Eval("Id") %>' ></asp:LinkButton>
-                    <asp:LinkButton ID="lnkDetail" CssClass="btn btn-info" runat="server" CausesValidation="False" CommandName="Detail" Text="Detail" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' ></asp:LinkButton>
+                    <asp:LinkButton ID="lnkDetail" CssClass="btn btn-info" runat="server" CausesValidation="False" CommandName="Detail" Text="Advs" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' ></asp:LinkButton>
                     <%--<asp:LinkButton ID="lnkDelete" CssClass="btn btn-danger" runat="server" CausesValidation="False" CommandName="Delete" Text="Deactivate" CommandArgument='<%# Eval("Id") %>' OnClientClick="return confirm('Are you sure about inactivate the selected user?')" ></asp:LinkButton>--%>
                 </ItemTemplate>
                 <FooterTemplate>

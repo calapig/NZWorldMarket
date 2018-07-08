@@ -17,7 +17,16 @@ namespace NZWorldMarket
             {
                 hdfAdverId.Value = Request.QueryString["AdverId"] ?? "0";
 
-                LoadAdvertisementMainImage();
+                if (!hdfAdverId.Value.Equals("0"))
+                {
+                    dvAdverts.CssClass = "invisible";
+                    LoadAdvertisementMainImage();
+                }
+                else
+                {
+                    dvAdverts.CssClass = "visible";
+                    dvConfigAdver.CssClass = "invisible";
+                }
             }
         }
 
@@ -178,5 +187,18 @@ namespace NZWorldMarket
 
         #endregion
 
+        protected void DdlAdverts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hdfAdverId.Value = DdlAdverts.SelectedValue;
+            if (!hdfAdverId.Value.Equals("-1"))
+            {
+                dvConfigAdver.CssClass = "visible";
+                LoadAdvertisementMainImage();
+            }
+            else
+            {
+                dvConfigAdver.CssClass = "invisible";
+            }
+        }
     }
 }

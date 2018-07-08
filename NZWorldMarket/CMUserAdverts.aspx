@@ -12,15 +12,25 @@
         OnRowCommand="gvAdvertisements_RowCommand"  AllowSorting="true"
         CssClass="table table-bordered table-striped table-condensed" >
         <Columns>
-            <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="False" SortExpression="Id"></asp:BoundField>
+            <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id"></asp:BoundField>
             <asp:BoundField DataField="UserId" HeaderText="UserId" Visible="false" SortExpression="UserId"></asp:BoundField>
             <asp:BoundField DataField="RegionId" HeaderText="RegionId" Visible="false" SortExpression="RegionId"></asp:BoundField>
             <asp:BoundField DataField="AdvertTypeId" HeaderText="AdvertTypeId" Visible="false" SortExpression="AdvertTypeId"></asp:BoundField>
-            <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title"></asp:BoundField>
+            <%--<asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title"></asp:BoundField>--%>
             <asp:BoundField DataField="URL" HeaderText="URL" Visible="false" SortExpression="URL"></asp:BoundField>
-            <asp:BoundField DataField="PostDeadLine" HeaderText="PostDeadLine" SortExpression="PostDeadLine"></asp:BoundField>
-            <asp:BoundField DataField="SearchTags" HeaderText="SearchTags" SortExpression="SearchTags"></asp:BoundField>
+            <%--<asp:BoundField DataField="SearchTags" HeaderText="SearchTags" SortExpression="SearchTags"></asp:BoundField>--%>
             <%--<asp:CheckBoxField DataField="Active" HeaderText="Active" SortExpression="Active"></asp:CheckBoxField>--%>
+            <asp:TemplateField HeaderText="Title" SortExpression="FirstName" ItemStyle-CssClass="col-xs-4">
+                <EditItemTemplate>
+                    <asp:HiddenField ID="hdfId" runat="server" value='<%# Eval("Id") %>' />
+                    <asp:TextBox ID="txtTitle" runat="server" Text='<%# Eval("Title") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="rfvTitle" runat="server" CssClass="text-danger" ValidationGroup="Edit" ControlToValidate="txtTitle" ErrorMessage="(!)"></asp:RequiredFieldValidator>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="lblTitle" runat="server" Text='<%# Bind("Title") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
             <asp:TemplateField HeaderText="State" SortExpression="Active" >
                 <EditItemTemplate>
                     <asp:DropDownList ID="ddlState" runat="server" SelectedValue='<%# Bind("Active") %>'  >
@@ -32,6 +42,7 @@
                     <asp:Label ID="lblState" runat="server" Text='<%# Bind("ActiveText") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:BoundField DataField="PostDeadLine" HeaderText="PostDeadLine" SortExpression="PostDeadLine" DataFormatString="{0:MM-dd-yyyy}" ApplyFormatInEditMode="true" ></asp:BoundField>
             <asp:BoundField DataField="Creation" HeaderText="Creation" ReadOnly="true" SortExpression="Creation" DataFormatString="{0:MM-dd-yyyy HH:mm}" ></asp:BoundField>
             <asp:BoundField DataField="Modified" HeaderText="Modified" ReadOnly="true" SortExpression="Modified" DataFormatString="{0:MM-dd-yyyy HH:mm}" ></asp:BoundField>
             <asp:TemplateField ShowHeader="true" >
@@ -40,7 +51,7 @@
                     <asp:LinkButton ID="lnkCancel" CssClass="btn btn-danger" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
                 </EditItemTemplate>
                 <ItemTemplate>
-                    <asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CssClass="btn btn-primary" CommandName="Edit" Text="Edit" CommandArgument='<%# Eval("Id") %>' ></asp:LinkButton>
+                    <%--<asp:LinkButton ID="lnkEdit" runat="server" CausesValidation="False" CssClass="btn btn-primary" CommandName="Edit" Text="Edit" CommandArgument='<%# Eval("Id") %>' ></asp:LinkButton>--%>
                     <asp:LinkButton ID="lnkDetail" runat="server" CausesValidation="False" CssClass="btn btn-info" CommandName="Detail" Text="Detail" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' ></asp:LinkButton>
                     <asp:LinkButton ID="lnkSendEmail" runat="server" CausesValidation="False" CssClass="btn btn-warning" CommandName="SendEmail" Text="Send URL" CommandArgument='<%# DataBinder.Eval(Container, "RowIndex") %>' ></asp:LinkButton>
                 </ItemTemplate>
@@ -83,7 +94,7 @@
             <asp:Parameter Name="Title" Type="String"></asp:Parameter>
             <asp:Parameter DbType="Date" Name="PostDeadLine"></asp:Parameter>
             <asp:Parameter Name="SearchTags" Type="String"></asp:Parameter>
-            <asp:Parameter Name="Active" Type="Boolean"></asp:Parameter>
+            <asp:Parameter Name="Active" Type="byte"></asp:Parameter>
             <asp:Parameter Name="Id" Type="Int64"></asp:Parameter>
         </UpdateParameters>
     </asp:SqlDataSource>

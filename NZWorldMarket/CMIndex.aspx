@@ -12,10 +12,11 @@
         <br />
         <br />
         <br />
-        - Advertisement Management System: Inside you will find all the advertisements registered for the users
-        <br />
-        <br />
-        - User Management System: Inside you will find all the users who have created an advertisement
+        <ul style="list-style-type:square">
+          <li>Advertisement Management System: Inside you will find all the advertisements registered for the users</li>
+          
+          <li>User Management System: Inside you will find all the users who have created an advertisement</li>
+        </ul>
         <br />
         <br />
         <br /><br /><br />

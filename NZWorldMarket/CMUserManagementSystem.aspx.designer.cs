@@ -10,7 +10,7 @@
 namespace NZWorldMarket {
     
     
-    public partial class CMMasterCustomerManager {
+    public partial class CMUserManagementSystem {
         
         /// <summary>
         /// gvCustomerAdvert control.

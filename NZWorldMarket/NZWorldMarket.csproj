@@ -196,7 +196,7 @@
     <Content Include="WACart.aspx" />
     <Content Include="WAItemDetail.aspx" />
     <Content Include="CMIndex.aspx" />
-    <Content Include="CMMasterCustomerManager.aspx" />
+    <Content Include="CMUserManagementSystem.aspx" />
     <Content Include="CMUserAdverts.aspx" />
     <Content Include="Welcome.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -359,12 +359,12 @@
     <Compile Include="CMIndex.aspx.designer.cs">
       <DependentUpon>CMIndex.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CMMasterCustomerManager.aspx.cs">
-      <DependentUpon>CMMasterCustomerManager.aspx</DependentUpon>
+    <Compile Include="CMUserManagementSystem.aspx.cs">
+      <DependentUpon>CMUserManagementSystem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CMMasterCustomerManager.aspx.designer.cs">
-      <DependentUpon>CMMasterCustomerManager.aspx</DependentUpon>
+    <Compile Include="CMUserManagementSystem.aspx.designer.cs">
+      <DependentUpon>CMUserManagementSystem.aspx</DependentUpon>
     </Compile>
     <Compile Include="CMUserAdverts.aspx.cs">
       <DependentUpon>CMUserAdverts.aspx</DependentUpon>

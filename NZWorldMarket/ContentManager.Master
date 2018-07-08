@@ -58,7 +58,7 @@
                   </li>
                 </ul>
                 <a class="nav-item nav-link font-weight-bold text-light" runat="server" href="~/CMAdverManager">Advertisement Management System</a>
-                <a class="nav-item nav-link font-weight-bold text-light" runat="server" href="~/CMMasterCustomerManager">User Management System</a>
+                <a class="nav-item nav-link font-weight-bold text-light" runat="server" href="~/CMUserManagementSystem">User Management System</a>
             </div>
 
         </nav>
