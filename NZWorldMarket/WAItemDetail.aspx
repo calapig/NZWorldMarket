@@ -81,9 +81,9 @@
       <li class="nav-item">
         <a class="nav-link " data-toggle="tab" href="#photos">Photos</a>
       </li>
-      <li class="nav-item">
+     <%-- <li class="nav-item">
         <a class="nav-link " data-toggle="tab" href="#schedule">Schedule</a>
-      </li>
+      </li>--%>
     </ul>
 
     <div id="myTabContent" class="tab-content">
@@ -143,9 +143,9 @@
 
         </div>
 
-        <div class="tab-pane fade" id="schedule" style="padding:10px" >
+      <%--  <div class="tab-pane fade" id="schedule" style="padding:10px" >
         
-        </div>
+        </div>--%>
 
     </div>
 
