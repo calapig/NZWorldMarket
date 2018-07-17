@@ -135,6 +135,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CMCreateManager.aspx" />
+    <Content Include="Scripts\myValidate.js" />
     <Content Include="WAAbout.aspx" />
     <Content Include="WAContact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -252,7 +254,15 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="BLL\CartBLL.cs" />
+    <Compile Include="CMCreateManager.aspx.cs">
+      <DependentUpon>CMCreateManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMCreateManager.aspx.designer.cs">
+      <DependentUpon>CMCreateManager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CommonResources\EmailUtility.cs" />
+    <Compile Include="CommonResources\Security.cs" />
     <Compile Include="DAL\AdverItemDAL.cs" />
     <Compile Include="DAL\CartItemDAL.cs" />
     <Compile Include="WAAbout.aspx.cs">

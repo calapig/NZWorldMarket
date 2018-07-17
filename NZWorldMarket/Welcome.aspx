@@ -42,7 +42,8 @@
         </asp:ScriptManager>--%>
 
         <div class="container-fluid">
-            <div class="row justify-content-around">
+            
+            <%--<div class="row justify-content-around">
                 <div class="text-center vertical-center">
                   <asp:Image ID="mainLogo" runat="server" ImageUrl="~/Images/Logo/Logo2.JPG" />
                 </div>
@@ -53,6 +54,47 @@
                 </div>
                 <div class="vertical-centerButton ">
                     <asp:LinkButton ID="btnContentMg" runat="server" CssClass="btn btn-warning btn-lg btn-block" Text="Go to Content Manager System" PostBackUrl="~/CMIndex.aspx" />
+                </div>
+            </div>--%>
+
+            <div class="row">
+                <div class="col">
+                    <asp:Image ID="mainLogo" runat="server" ImageUrl="~/Images/Logo/Logo2.JPG" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <!-- Nest Lv 1 -->
+                    <div class="row">
+                        <div class="col">
+                            <asp:LinkButton ID="btnWebApp" runat="server" CssClass="btn btn-primary btn-lg btn-block" Text="Go to Customer Web Application" PostBackUrl="~/WAIndex.aspx" />
+                        </div>
+                        <div class="col" style="background-color:darkslategrey; color: whitesmoke">
+
+                            <!-- Nest Lv 2 -->
+                            <div class="row">
+                                <div class="col">USER</div>
+                                <div class="col"><asp:TextBox ID="itUserName" runat="server" ></asp:TextBox></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">PASSWORD</div>
+                                <div class="col"><asp:TextBox ID="itUserPassword" runat="server" ></asp:TextBox></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    
+                                </div>
+                                <div class="col">
+                                    <asp:LinkButton ID="btnContentMg" runat="server" CssClass="btn btn-warning btn-lg btn-block" Text="Go to Content Manager System" OnClick="btnContentMg_Click" />
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
