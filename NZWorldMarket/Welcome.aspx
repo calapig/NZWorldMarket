@@ -74,12 +74,18 @@
                             <!-- Nest Lv 2 -->
                             <div class="row">
                                 <div class="col">USER</div>
-                                <div class="col"><asp:TextBox ID="itUserName" runat="server" ></asp:TextBox></div>
+                                <div class="col">
+                                    <asp:TextBox ID="itUserName" runat="server" ></asp:TextBox><br/>
+                                    <asp:RequiredFieldValidator ID="rfvUserName" runat="server" CssClass="text-danger" ControlToValidate="itUserName" ErrorMessage="Please provide you username."></asp:RequiredFieldValidator>
+                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="col">PASSWORD</div>
-                                <div class="col"><asp:TextBox ID="itUserPassword" runat="server" ></asp:TextBox></div>
+                                <div class="col">
+                                    <asp:TextBox ID="itUserPassword" runat="server" TextMode="Password" ></asp:TextBox><br/>
+                                    <asp:RequiredFieldValidator ID="rfvUserPassword" runat="server" CssClass="text-danger" ControlToValidate="itUserPassword" ErrorMessage="Please provide you password."></asp:RequiredFieldValidator>
+                                </div>
                             </div>
 
                             <div class="row">

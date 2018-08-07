@@ -17,9 +17,6 @@
           
           <li>User Management System: Inside you will find all the users who have created an advertisement</li>
         </ul>
-        <br />
-        <br />
-        <br /><br /><br />
     </p>
 
 </asp:Content>

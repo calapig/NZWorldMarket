@@ -8,6 +8,30 @@
     <asp:HiddenField ID="hdfAdverId" runat="server" />
     <asp:Panel id="dvAdverts" runat="server" CssClass="visible">
         <div class="form-group">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="DdlItemsAdv">Type:</label>
+                </div>
+                <asp:DropDownList ID="DdlTypeAdver" runat="server" AutoPostBack="true" DataSourceID="dsDdlTypeAdver" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="true" OnSelectedIndexChanged="DdlTypeAdver_SelectedIndexChanged" >
+                    <asp:ListItem Value="-1">-- Select --</asp:ListItem>
+                </asp:DropDownList>
+                <asp:SqlDataSource runat="server" ID="dsDdlTypeAdver" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT DISTINCT at.Id, at.Name, at.OrderCode FROM [Advertisement] a INNER JOIN [AdvertType] at ON a.AdvertTypeId = at.Id ORDER BY at.OrderCode"></asp:SqlDataSource>
+
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="TxtDate">Date Creation:</label>
+                </div>
+                <asp:TextBox ID="TxtDate" runat="server" ></asp:TextBox>
+
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="TxtDate">Key word:</label>
+                </div>
+                <asp:TextBox ID="TxtKeyWord" runat="server" ></asp:TextBox>
+
+                <asp:Button ID="BtnSearch" runat="server" CssClass="btn btn-warning" Text="Search" Width="150px" />
+
+            </div>
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="DdlItemsAdv">Advertisements:</label>
@@ -17,6 +41,7 @@
                 </asp:DropDownList>
                 <asp:SqlDataSource runat="server" ID="dsDdlAdverts" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT [Id], [Title] FROM [Advertisement] ORDER BY [Title]"></asp:SqlDataSource>
             </div>
+
         </div>                    
     </asp:Panel>
    
@@ -25,7 +50,7 @@
 
         <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#infoCard">Info Card</a>
+            <a class="nav-link active show" data-toggle="tab" href="#infoCard">Info Card</a>
           </li>
           <li class="nav-item">
             <a class="nav-link " data-toggle="tab" href="#detail">Items</a>
@@ -40,7 +65,7 @@
 
         <div id="myTabContent" class="tab-content">
 
-          <div class="tab-pane fade" id="infoCard" style="padding:10px" >
+          <div class="tab-pane fade active show" id="infoCard" style="padding:10px" >
 
                <div class="row row justify-content-start">
                 <div class="col-4">
@@ -85,9 +110,15 @@
                           </asp:TemplateField>
                           <asp:BoundField DataField="URL" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="URL" SortExpression="URL" Visible="false" />
                           <asp:BoundField DataField="StyleSheet" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="StyleSheet" SortExpression="StyleSheet" Visible="false" />
-                          <asp:BoundField DataField="PostDeadLine" HeaderText="PostDeadLine" SortExpression="PostDeadLine" DataFormatString="{0:MM-dd-yyyy}" ApplyFormatInEditMode="true" />
+                          <asp:BoundField DataField="PostDeadLine" HeaderText="PostDeadLine" SortExpression="PostDeadLine" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" DataFormatString="{0:MM-dd-yyyy}" ApplyFormatInEditMode="true" />
                           <asp:BoundField DataField="SearchTags" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="SearchTags" SortExpression="SearchTags" Visible="false" />
                           <asp:BoundField DataField="PhotoId" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PhotoId" SortExpression="PhotoId" Visible="false" />
+                          <asp:CheckBoxField DataField="Promotion" HeaderText="In Promo" SortExpression="Active" />
+                          <asp:TemplateField HeaderText="Discount Value (%)" >
+                              <EditItemTemplate>
+                                  <asp:TextBox ID="txtDiscountE" runat="server" CssClass="form-control form-control-sm mr-sm-2" Text='<%# Bind("Discount") %>' ></asp:TextBox>
+                              </EditItemTemplate>
+                          </asp:TemplateField>
                           <asp:CheckBoxField DataField="Active" HeaderText="Active" SortExpression="Active" />
                           <asp:BoundField DataField="Creation"   HeaderText="Creation" SortExpression="Creation" ReadOnly="true" DataFormatString="{0:MM-dd-yyyy HH:mm}" />
                           <asp:BoundField DataField="Modified"   HeaderText="Modified" SortExpression="Modified" ReadOnly="true" DataFormatString="{0:MM-dd-yyyy HH:mm}" />
@@ -96,9 +127,9 @@
                     </asp:DetailsView>
                     <asp:SqlDataSource ID="dsDvInfoCardAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" 
                         DeleteCommand="DELETE FROM [Advertisement] WHERE [Id] = @Id" 
-                        InsertCommand="INSERT INTO [Advertisement] ([UserId], [RegionId], [AdvertTypeId], [Title], [Overview], [URL], [StyleSheet], [PostDeadLine], [SearchTags], [PhotoId], [Active], [Creation], [Modified]) VALUES (@UserId, @RegionId, @AdvertTypeId, @Title, @Overview, @URL, @StyleSheet, @PostDeadLine, @SearchTags, @PhotoId, @Active, @Creation, @Modified)" 
+                        InsertCommand="INSERT INTO [Advertisement] ([UserId], [RegionId], [AdvertTypeId], [Title], [Overview], [URL], [StyleSheet], [PostDeadLine], [SearchTags], [PhotoId], [Promotion], [Discount], [Active], [Creation], [Modified]) VALUES (@UserId, @RegionId, @AdvertTypeId, @Title, @Overview, @URL, @StyleSheet, @PostDeadLine, @SearchTags, @PhotoId, @Promotion, @Discount, @Active, @Creation, @Modified)" 
                         SelectCommand="SELECT * FROM [Advertisement] WHERE ([Id] = @Id)" 
-                        UpdateCommand="UPDATE [Advertisement] SET [UserId] = @UserId, [RegionId] = @RegionId, [AdvertTypeId] = @AdvertTypeId, [Title] = @Title, [Overview] = @Overview, [PostDeadLine] = @PostDeadLine, [Active] = @Active WHERE [Id] = @Id">
+                        UpdateCommand="UPDATE [Advertisement] SET [UserId] = @UserId, [RegionId] = @RegionId, [AdvertTypeId] = @AdvertTypeId, [Title] = @Title, [Overview] = @Overview, [PostDeadLine] = @PostDeadLine, [Promotion] = @Promotion, [Discount] = @Discount, [Active] = @Active WHERE [Id] = @Id">
                         <DeleteParameters>
                             <asp:Parameter Name="Id" Type="Int64" />
                         </DeleteParameters>
@@ -113,6 +144,8 @@
                             <asp:Parameter DbType="Date" Name="PostDeadLine" />
                             <asp:Parameter Name="SearchTags" Type="String" />
                             <asp:Parameter Name="PhotoId" Type="Int64" />
+                            <asp:Parameter Name="Promotion" Type="Boolean" />
+                            <asp:Parameter Name="Discount" Type="Int32" />
                             <asp:Parameter Name="Active" Type="Boolean" />
                             <asp:Parameter DbType="Date" Name="Creation" />
                             <asp:Parameter DbType="Date" Name="Modified" />
@@ -127,6 +160,8 @@
                             <asp:Parameter Name="Title" Type="String" />
                             <asp:Parameter Name="Overview" Type="String" />
                             <asp:Parameter DbType="Date" Name="PostDeadLine" />
+                            <asp:Parameter Name="Promotion" Type="Boolean" />
+                            <asp:Parameter Name="Discount" Type="Int32" />
                             <asp:Parameter Name="Active" Type="Boolean" />
                             <asp:Parameter Name="Id" Type="Int64" />
                         </UpdateParameters>
@@ -167,7 +202,7 @@
           
           </div>
 
-          <div class="tab-pane fade active show" id="detail" style="padding:10px" >
+          <div class="tab-pane fade " id="detail" style="padding:10px" >
               <asp:DetailsView ID="dvItemsAdv" runat="server" Height="50px" Width="355px" AllowPaging="True" PagerSettings-Mode="Numeric"  
                   PagerStyle-Font-Size="XX-Large" PagerStyle-Font-Bold="true" CssClass="table table-bordered table-condensed"
                   AutoGenerateRows="False" DataKeyNames="Id" DataSourceID="dsDvItemsAdv" BorderStyle="None" OnDataBound="dvItemsAdv_DataBound" 
@@ -325,6 +360,18 @@
                       </asp:TemplateField>
                       <asp:BoundField DataField="SearchTags" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="SearchTags" SortExpression="SearchTags"  Visible="false" />
                       <asp:BoundField DataField="PhotoId" ControlStyle-CssClass="form-control form-control-sm mr-sm-2" HeaderStyle-CssClass="input-group-text" HeaderText="PhotoId" SortExpression="PhotoId" Visible="false" />
+                      <asp:CheckBoxField DataField="Promotion" HeaderText="In Promo" SortExpression="Active" />
+                      <asp:TemplateField HeaderText="Discount Value (%)" >
+                          <ItemTemplate>
+                              <asp:Label ID="LblDiscount" runat="server" Text='<%# Bind("Discount") %>' ></asp:Label>
+                          </ItemTemplate>
+                          <InsertItemTemplate>
+                              <asp:TextBox ID="txtDiscount" runat="server" CssClass="form-control form-control-sm mr-sm-2" ></asp:TextBox>
+                          </InsertItemTemplate>
+                          <EditItemTemplate>
+                              <asp:TextBox ID="txtDiscountE" runat="server" CssClass="form-control form-control-sm mr-sm-2" Text='<%# Bind("Discount") %>' ></asp:TextBox>
+                          </EditItemTemplate>
+                      </asp:TemplateField>
                       <asp:CheckBoxField DataField="Active" HeaderText="Active" SortExpression="Active" />
                       <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" ButtonType="Button"  ControlStyle-CssClass="btn btn-primary" />
 
@@ -336,13 +383,13 @@
               <asp:SqlDataSource ID="dsDvItemsAdv" runat="server" ConnectionString="<%$ ConnectionStrings:NZWorldMarketConnectionString %>" 
                   DeleteCommand="DELETE FROM [AdvertItem] WHERE [Id] = @Id" 
                   InsertCommand="INSERT INTO [AdvertItem] ([OrderCode], [Name], [AdvertisementId], [ItemType], [AdvertItemCategoryId], [CountryId], 
-                  [ContinentId], [Price], [InitialStock], [Stock], [Description], [Active]) 
+                  [ContinentId], [Price], [InitialStock], [Stock], [Description], [Promotion], [Discount], [Active]) 
                   VALUES (@OrderCode, @Name, @AdvertisementId, @ItemType, @AdvertItemCategoryId, @CountryId, @ContinentId, @Price, @InitialStock, 
-                  @Stock, @Description, @Active)" 
+                  @Stock, @Description, @Promotion, @Discount, @Active)" 
                   SelectCommand="SELECT [AdvertItem].[Id],[AdvertItem].[OrderCode],[AdvertItem].[Name],[AdvertisementId],[ItemType],[AdvertItemCategoryId],
                   [AdvertItem].[CountryId],[AdvertItem].[ContinentId],[Price],[InitialStock],[Stock],[Description],[SearchTags],[PhotoId],
                   [AdvertItem].[Active],[ItemType].[Name] TypeName, [AdvertItemCategory].Name CategoryName,[Country].Name CountryName,
-                  [Continent].Name ContinentName
+                  [Continent].Name ContinentName, [AdvertItem].[Promotion], [AdvertItem].[Discount]
                   FROM [AdvertItem] INNER JOIN [ItemType] ON [AdvertItem].[ItemType] = [ItemType].[Id] 
                   INNER JOIN [AdvertItemCategory] ON [AdvertItem].AdvertItemCategoryId = [AdvertItemCategory].Id
                   INNER JOIN [Country] ON [AdvertItem].[CountryId] = [Country].Id
@@ -352,7 +399,7 @@
                   UpdateCommand="UPDATE [AdvertItem] SET [OrderCode] = @OrderCode, [Name] = @Name, [AdvertisementId] = @AdvertisementId, 
                   [ItemType] = @ItemType, [AdvertItemCategoryId] = @AdvertItemCategoryId, [CountryId] = @CountryId, [ContinentId] = @ContinentId, 
                   [Price] = @Price, [InitialStock] = @InitialStock, [Stock] = @Stock, [Description] = @Description, [SearchTags] = @SearchTags, 
-                  [PhotoId] = @PhotoId, [Active] = @Active WHERE [Id] = @Id">
+                  [PhotoId] = @PhotoId, [Promotion] = @Promotion, [Discount] = @Discount, [Active] = @Active WHERE [Id] = @Id">
                   <DeleteParameters>
                       <asp:Parameter Name="Id" Type="Int64" />
                   </DeleteParameters>
@@ -368,6 +415,8 @@
                       <asp:Parameter Name="InitialStock" Type="Byte" />
                       <asp:Parameter Name="Stock" Type="Byte" />
                       <asp:Parameter Name="Description" Type="String" />
+                      <asp:Parameter Name="Promotion" Type="Boolean" />
+                      <asp:Parameter Name="Discount" Type="Int32" />
                       <asp:Parameter Name="Active" Type="Boolean" />
                   </InsertParameters>
                   <SelectParameters>
@@ -387,6 +436,8 @@
                       <asp:Parameter Name="Description" Type="String" />
                       <asp:Parameter Name="SearchTags" Type="String" />
                       <asp:Parameter Name="PhotoId" Type="Int64" />
+                      <asp:Parameter Name="Promotion" Type="Boolean" />
+                      <asp:Parameter Name="Discount" Type="Int32" />
                       <asp:Parameter Name="Active" Type="Boolean" />
                       <asp:Parameter Name="Id" Type="Int64" />
                   </UpdateParameters>
@@ -485,10 +536,6 @@
                   </asp:SqlDataSource>
               </fieldset>
           </div>
-
-          <%--<div class="tab-pane fade" id="schedule" style="padding:10px" >
-        
-          </div>--%>
 
         </div>
 

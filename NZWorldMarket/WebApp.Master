@@ -16,21 +16,28 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <%--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.js" />--%>
+  <%-- 
+    <script>
 
-  <%--  <script>
-         var str=location.href.toLowerCase();
-    $("#nav li a").each(function() {
-        if (str.indexOf($(this).attr("href").toLowerCase()) > -1) {
-            $("li.current-menu-item").removeClass("current-menu-item");
-            $(this).parent().addClass("current-menu-item");
-        }
-    });
-    $("li.current-menu-item").parents().each(function(){
-        if ($(this).is("li")){
-            $(this).addClass("current-menu-item");
-        }
-    });
-    </script>--%>
+        $(function () {
+            var str = location.href.toLowerCase();
+            $("#nav li a").each(function () {
+                if (str.indexOf($(this).attr("href").toLowerCase()) > -1) {
+                    $("li.current-menu-item").removeClass("current-menu-item");
+                    $(this).parent().addClass("current-menu-item");
+                }
+            });
+            $("li.current-menu-item").parents().each(function () {
+                if ($(this).is("li")) {
+                    $(this).addClass("current-menu-item");
+                }
+            });
+        });
+    </script>
+ --%>   
 
 </head>
 <body>
@@ -41,7 +48,7 @@
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 
                 Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
+                <%--<asp:ScriptReference Name="jquery" />--%>
                 <asp:ScriptReference Name="bootstrap" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
@@ -64,7 +71,7 @@
             
             <a class="navbar-brand" runat="server" href="~/WAIndex.aspx">
                 <%--NZWorldMarket.co--%>
-                <img src="Images/Logo/Logo16.JPG" width="200" height="50" alt="">
+                <img src="Images/Logo/Logo16.PNG" width="200" height="50" alt="">
             </a>  
             
             <div class="collapse navbar-collapse" id="navbarTogglerLogo">
@@ -92,33 +99,35 @@
                 <ul class="navbar-nav justify-content-end mr-auto mt-2 mt-lg-0">
                   <li class="nav-item active">
                       <a class="nav-item nav-link font-weight-bold active" runat="server" href="~/WAIndex" >
-                          Home
+                          <i class="fa fa-home"></i>Home
                       </a>
-                     <%-- <span class="glyphicon glyphicon-home"></span>
-                      <span class="icon">&#xf015;</span>--%>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WANewAdver">New Advertisement</a>
-                  </li>
-               <%--   <li class="nav-item">
-                    
-                  </li>--%>
-                  <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAContact">Contact</a>
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WANewAdver">
+                        <i class="fa fa-newspaper-o"></i>New Advertisement
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAFaq">FAQ</a>
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAContact">
+                        <i class="fa fa-envelope" ></i>Contact
+                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAAbout">About</a>
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAFaq">
+                        <i class="fa fa-question-circle" ></i>FAQ
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WAAbout">
+                        <i class="fa fa-flag" ></i> About
+                    </a>
                   </li>
                 </ul>
                 <a class="nav-item nav-link font-weight-bold" runat="server" href="~/WACart">
-                    Ur Cart
-                  <%--  <i class="glyphicon glyphicon-shopping-cart"></i>--%>
+                    <i class="fa fa-shopping-cart" style="padding-left:5px" ></i>Ur Cart
                     <span id="cartItems" runat="server"></span>
                 </a>
-                <%--<label for="select" class="col-sm-2 col-form-label col-form-label-sm" >Region</label>--%>
+                
                 <asp:DropDownList ID="ddlRegion" runat="server" class="custom-select custom-select-sm" DataSourceID="dsDdlRegion" DataTextField="Name" DataValueField="Id" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged" >
                     <asp:ListItem Selected="True" Value="0" >Region</asp:ListItem>
                 </asp:DropDownList>

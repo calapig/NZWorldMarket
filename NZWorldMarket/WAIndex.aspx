@@ -4,18 +4,20 @@
     <asp:HiddenField ID="HdfRegionId" runat="server" Value="-1" />
     <asp:HiddenField ID="HdfContinentId" runat="server" Value="-1" />
     <asp:HiddenField ID="HdfKeySearch" runat="server" Value="" />
+    
+    <div class="alert alert-dark" >
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner">
+      <div class="carousel-inner" >
         
           <asp:Repeater ID="rpCarousel" runat="server" DataSourceID="dsFvCarousel">
               <ItemTemplate>
                   <div class="carousel-item">
-                      <asp:Image ID="imgAdver" runat="server" style="max-width: 800px; height: auto" ImageUrl='<%# Eval("PhotoId", "CommonResources/ShowImage.ashx?photoId={0}") %>' class="d-block w-100" AlternateText="First slide" />
+                      <asp:Image ID="imgAdver" runat="server" ImageUrl='<%# Eval("PhotoId", "CommonResources/ShowImage.ashx?photoId={0}") %>' class="d-block w-100" AlternateText="First slide" />
                       <div class="carousel-caption d-none d-md-block">
                         <%--<hr class="my-1">--%>
                         <h5><asp:Label ID="lbTitle" runat="server" CssClass="badge badge-dark" Text='<%# Eval("Title") %>' ></asp:Label></h5>
@@ -36,6 +38,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+    </div>
 
     <div class="card-deck" style="padding-top: 15px">
 
@@ -43,8 +46,7 @@
         <ItemTemplate>
             <div class="card border-primary text-white bg-dark mb-3">
                 <div class="card-header bg-primary"><b><%# Eval("RegionName") %></b></div>
-                 <asp:Image ID="advImage" runat="server" CssClass="rounded mx-auto d-block" ImageUrl='<%# Eval("PhotoId", "CommonResources/ShowImage.ashx?photoId={0}") %>' Style="max-width: 100%; height: auto;" />
-                 <%--<div class="photoItemContainer" ></div>--%>
+                <asp:Image ID="advImage" runat="server" CssClass="rounded mx-auto d-block" ImageUrl='<%# Eval("PhotoId", "CommonResources/ShowImage.ashx?photoId={0}") %>' />
                 <div class="card-body">
                     <h5 class="card-title"><b><%# Eval("Title") %></b></h5>
                     <p class="card-text">'<%# Eval("Overview") %>'</p>

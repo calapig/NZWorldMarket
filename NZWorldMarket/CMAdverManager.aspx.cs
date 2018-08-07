@@ -187,6 +187,10 @@ namespace NZWorldMarket
 
         #endregion
 
+        protected void DdlTypeAdver_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
         protected void DdlAdverts_SelectedIndexChanged(object sender, EventArgs e)
         {
             hdfAdverId.Value = DdlAdverts.SelectedValue;

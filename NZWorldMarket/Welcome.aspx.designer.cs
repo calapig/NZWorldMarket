@@ -49,6 +49,15 @@ namespace NZWorldMarket {
         protected global::System.Web.UI.WebControls.TextBox itUserName;
         
         /// <summary>
+        /// rfvUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUserName;
+        
+        /// <summary>
         /// itUserPassword control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace NZWorldMarket {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox itUserPassword;
+        
+        /// <summary>
+        /// rfvUserPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUserPassword;
         
         /// <summary>
         /// btnContentMg control.
