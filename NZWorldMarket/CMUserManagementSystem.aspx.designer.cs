@@ -13,21 +13,21 @@ namespace NZWorldMarket {
     public partial class CMUserManagementSystem {
         
         /// <summary>
-        /// gvCustomerAdvert control.
+        /// gvUserAdvert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCustomerAdvert;
+        protected global::System.Web.UI.WebControls.GridView gvUserAdvert;
         
         /// <summary>
-        /// dsGvCustomerAdvert control.
+        /// dsGvUserAdvert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsGvCustomerAdvert;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsGvUserAdvert;
     }
 }

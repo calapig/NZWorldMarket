@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContentManager.Master" AutoEventWireup="true" CodeBehind="CMUserManagementSystem.aspx.cs" Inherits="NZWorldMarket.CMUserManagementSystem" %>
-<asp:Content ID="MasterCustomerMg" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="MasterUserMg" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="meContainer" >
-        <h1>User Management System</h1>
+        <h1>Staff/User Management System</h1>
     </div>
 
-    <asp:GridView ID="gvCustomerAdvert" runat="server" AutoGenerateColumns="False" DataKeyNames="Id,UserId" AllowSorting="true"
-        DataSourceID="dsGvCustomerAdvert" ShowFooter="true" OnRowCommand="gvCustomerAdvert_RowCommand"
+    <asp:GridView ID="gvUserAdvert" runat="server" AutoGenerateColumns="False" DataKeyNames="Id,UserId" AllowSorting="true"
+        DataSourceID="dsGvUserAdvert" ShowFooter="true" OnRowCommand="gvUserAdvert_RowCommand"
         CssClass="table table-bordered table-striped table-condensed">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="False" SortExpression="Id"></asp:BoundField>
@@ -93,12 +93,12 @@
                     <%--<asp:LinkButton ID="lnkDelete" CssClass="btn btn-danger" runat="server" CausesValidation="False" CommandName="Delete" Text="Deactivate" CommandArgument='<%# Eval("Id") %>' OnClientClick="return confirm('Are you sure about inactivate the selected user?')" ></asp:LinkButton>--%>
                 </ItemTemplate>
                 <FooterTemplate>
-                    <asp:Button OnClick="btnAddCustomer_OnClick" ID="btnAddCustomer" CssClass="btn btn-warning" runat="server" ValidationGroup="Add" Text="Add" />
+                    <asp:Button OnClick="btnAddUser_OnClick" ID="btnAddUser" CssClass="btn btn-warning" runat="server" ValidationGroup="Add" Text="Add" />
                 </FooterTemplate>
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource runat="server" ID="dsGvCustomerAdvert" 
+    <asp:SqlDataSource runat="server" ID="dsGvUserAdvert" 
         ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>'
         DeleteCommand="UPDATE U SET U.Active = 0  FROM [Person] P INNER JOIN [User] U ON P.Id = U.PersonId WHERE P.[Id] = @Id"
         InsertCommand="INSERT INTO [Person] ([FirstName], [LastName], [Email], [CountryId]) 

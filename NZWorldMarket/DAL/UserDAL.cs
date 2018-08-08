@@ -85,5 +85,60 @@ namespace NZWorldMarket.DAL
             else
                 return null;
         }
+
+        public DataTable GetUser(long id)
+        {
+            String query = @"SELECT Id, Name, Password, Salt, Active FROM [User] WHERE Id = " + id + ";";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, conn);
+
+            DataSet dt = new DataSet();
+            int counter = sqlDataAdapter.Fill(dt);
+
+            if (counter > 0)
+                return dt.Tables[0];
+            else
+                return null;
+        }
+
+        public Int64 UpdateField(long id, string field, string value) {
+            String query = @"UPDATE [User] SET " + field + " = @Value WHERE Id = @Id;";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@Value", value);
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            int num_updates = cmd.ExecuteNonQuery();
+
+            this.CloseUserDAL();
+
+            return num_updates;
+        }
+
+        public DataTable FilterUser(string initRangeDate, string endRangeDate, string keyWord)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            try
+            {
+                cmd = new SqlCommand("dbo.spNZWM_userExtensiveSearch", conn);
+                cmd.Parameters.Add(new SqlParameter("@initRangeDate", initRangeDate));
+                cmd.Parameters.Add(new SqlParameter("@EndRangeDate", endRangeDate));
+                cmd.Parameters.Add(new SqlParameter("@KeyWord", keyWord));
+                cmd.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand = cmd;
+                da.Fill(dt);
+            }
+            catch (Exception x)
+            {
+                throw new Exception("FilterAdvertisementError", x);
+            }
+            finally
+            {
+                cmd.Dispose();
+            }
+
+            return dt;
+        }
     }
 }

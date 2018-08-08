@@ -14,49 +14,49 @@ namespace NZWorldMarket
 
         }
 
-        protected void btnAddCustomer_OnClick(object sender, EventArgs e)
+        protected void btnAddUser_OnClick(object sender, EventArgs e)
         {
-            dsGvCustomerAdvert.InsertParameters["FirstName"].DefaultValue =
-                ((TextBox)gvCustomerAdvert.FooterRow.FindControl("txtAddFirstName")).Text;
+            dsGvUserAdvert.InsertParameters["FirstName"].DefaultValue =
+                ((TextBox)gvUserAdvert.FooterRow.FindControl("txtAddFirstName")).Text;
 
-            dsGvCustomerAdvert.InsertParameters["LastName"].DefaultValue =
-                ((TextBox)gvCustomerAdvert.FooterRow.FindControl("txtAddLastName")).Text;
+            dsGvUserAdvert.InsertParameters["LastName"].DefaultValue =
+                ((TextBox)gvUserAdvert.FooterRow.FindControl("txtAddLastName")).Text;
 
-            dsGvCustomerAdvert.InsertParameters["Email"].DefaultValue =
-             ((TextBox)gvCustomerAdvert.FooterRow.FindControl("txtAddEmail")).Text;
+            dsGvUserAdvert.InsertParameters["Email"].DefaultValue =
+             ((TextBox)gvUserAdvert.FooterRow.FindControl("txtAddEmail")).Text;
 
-            dsGvCustomerAdvert.InsertParameters["CountryId"].DefaultValue =
-             ((DropDownList)gvCustomerAdvert.FooterRow.FindControl("ddlAddCountry")).SelectedValue;
+            dsGvUserAdvert.InsertParameters["CountryId"].DefaultValue =
+             ((DropDownList)gvUserAdvert.FooterRow.FindControl("ddlAddCountry")).SelectedValue;
 
-            dsGvCustomerAdvert.Insert();
+            dsGvUserAdvert.Insert();
         }
 
-        protected void gvCustomerAdvert_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvUserAdvert_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridViewRow row = (GridViewRow)(((Control)e.CommandSource).NamingContainer);
 
             switch (e.CommandName) {
                 case "Update":
 
-                    dsGvCustomerAdvert.UpdateParameters["Id"].DefaultValue = ((HiddenField)row.FindControl("hdfId")).Value;
+                    dsGvUserAdvert.UpdateParameters["Id"].DefaultValue = ((HiddenField)row.FindControl("hdfId")).Value;
 
-                    dsGvCustomerAdvert.UpdateParameters["FirstName"].DefaultValue = ((TextBox)row.FindControl("txtFirstName")).Text;
+                    dsGvUserAdvert.UpdateParameters["FirstName"].DefaultValue = ((TextBox)row.FindControl("txtFirstName")).Text;
 
-                    dsGvCustomerAdvert.UpdateParameters["LastName"].DefaultValue = ((TextBox)row.FindControl("txtLastName")).Text;
+                    dsGvUserAdvert.UpdateParameters["LastName"].DefaultValue = ((TextBox)row.FindControl("txtLastName")).Text;
 
-                    dsGvCustomerAdvert.UpdateParameters["Email"].DefaultValue = ((TextBox)row.FindControl("txtEmail")).Text;
+                    dsGvUserAdvert.UpdateParameters["Email"].DefaultValue = ((TextBox)row.FindControl("txtEmail")).Text;
 
-                    dsGvCustomerAdvert.UpdateParameters["CountryId"].DefaultValue = ((DropDownList)row.FindControl("ddlCountry")).SelectedValue;
+                    dsGvUserAdvert.UpdateParameters["CountryId"].DefaultValue = ((DropDownList)row.FindControl("ddlCountry")).SelectedValue;
 
-                    dsGvCustomerAdvert.UpdateParameters["State"].DefaultValue = ((DropDownList)row.FindControl("ddlState")).SelectedValue;
+                    dsGvUserAdvert.UpdateParameters["State"].DefaultValue = ((DropDownList)row.FindControl("ddlState")).SelectedValue;
 
-                    dsGvCustomerAdvert.Update();
+                    dsGvUserAdvert.Update();
                     break;
                 case "Delete":
 
-                    dsGvCustomerAdvert.DeleteParameters["Id"].DefaultValue = e.CommandArgument.ToString();
+                    dsGvUserAdvert.DeleteParameters["Id"].DefaultValue = e.CommandArgument.ToString();
 
-                    dsGvCustomerAdvert.Delete();
+                    dsGvUserAdvert.Delete();
                     break;
                 case "Cancel":
                     break;
@@ -65,7 +65,7 @@ namespace NZWorldMarket
                 case "Detail":
                     
                     int rowIndex = int.Parse(e.CommandArgument.ToString());
-                    string userId = gvCustomerAdvert.DataKeys[rowIndex]["UserId"].ToString();
+                    string userId = gvUserAdvert.DataKeys[rowIndex]["UserId"].ToString();
 
                     Session["UserId"] = userId;
 
