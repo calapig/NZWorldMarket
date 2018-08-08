@@ -9,7 +9,7 @@ namespace NZWorldMarket.CommonResources
 {
     public class Security
     {
-
+        // Generate the hash code of a string
         public static string GetHash(SHA512 Hash, string input)
         {
 

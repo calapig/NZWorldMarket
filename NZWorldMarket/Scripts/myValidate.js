@@ -82,3 +82,7 @@ function ValidateExtraRules() {
     console.log('bye');
     return true;
 }
+
+$('#form1').submit(function () {
+    return ValidateExtraRules();
+});
