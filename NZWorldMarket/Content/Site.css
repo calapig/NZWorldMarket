@@ -23,7 +23,7 @@ body {
 
 .photoItemContainer {
     max-width: 300px;
-    height: 320px;
+    height: 220px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
