@@ -47,9 +47,9 @@ namespace NZWorldMarket.DAL
             return num_inserts;
         }
 
-        public Int64 Create(string userName, string password, string salt)
+        public Int64 Create(string userName, string password, string salt, string role)
         {
-            insertUserSecure += @" (GETDATE(), '" + userName + "', '" + password + "', '" + salt + "', 'MGR'); " +
+            insertUserSecure += @" (GETDATE(), '" + userName + "', '" + password + "', '" + salt + "', '" + role + "'); " +
                            " SELECT CAST(scope_identity() AS bigint) ";
             SqlCommand cmd = new SqlCommand(insertUserSecure, conn);
 
@@ -60,9 +60,21 @@ namespace NZWorldMarket.DAL
             return num_inserts;
         }
 
-        public DataTable GetUser(string userName)
+        internal Int64 AddVisitCustomer(long idUser)
         {
-            String query = @"SELECT Name, Password, Salt FROM [User] WHERE Name = '" + userName + "';";
+            string update = @"UPDATE [User] SET Visits = Visits + 1 WHERE Id = " + idUser.ToString();
+            SqlCommand cmd = new SqlCommand(update, conn);
+
+            Int64 num_updates = (Int64)cmd.ExecuteNonQuery();
+
+            this.CloseUserDAL();
+
+            return 1;
+        }
+
+        public DataTable GetUser(string userName, string role)
+        {
+            String query = @"SELECT Id, Name, Password, Salt FROM [User] WHERE Name = '" + userName + "' AND Role = '" + role + "' ;";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, conn);
 
             DataSet dt = new DataSet();

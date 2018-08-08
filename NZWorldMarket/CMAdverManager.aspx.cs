@@ -204,5 +204,16 @@ namespace NZWorldMarket
                 dvConfigAdver.CssClass = "invisible";
             }
         }
+
+        protected void BtnSearch_Click(object sender, EventArgs e)
+        {
+            AdvertisementDAL adver = new AdvertisementDAL();
+            DdlAdverts.Items.Clear();
+            DdlAdverts.Items.Add(new ListItem("-- Selected --", "-1"));
+            DdlAdverts.DataSource = adver.FilterAdvertisement(DdlTypeAdver.SelectedValue, TxtDate.Text, TxtKeyWord.Text);
+            DdlAdverts.DataBind();
+
+            dvConfigAdver.CssClass = "invisible";
+        }
     }
 }

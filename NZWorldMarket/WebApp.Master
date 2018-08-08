@@ -17,9 +17,8 @@
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <%--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.12.1/jquery-ui.js" />--%>
-  <%-- 
+    <script src="Scripts/jquery-3.3.1.js" type="text/javascript"></script>
+
     <script>
 
         $(function () {
@@ -37,10 +36,10 @@
             });
         });
     </script>
- --%>   
+    
 
 </head>
-<body>
+<body >
     <form runat="server" >
 
         <asp:ScriptManager runat="server">
@@ -71,7 +70,7 @@
             
             <a class="navbar-brand" runat="server" href="~/WAIndex.aspx">
                 <%--NZWorldMarket.co--%>
-                <img src="Images/Logo/Logo16.PNG" width="200" height="50" alt="">
+                <img src="Images/Logo/LogoCM.JPG"  alt="">
             </a>  
             
             <div class="collapse navbar-collapse" id="navbarTogglerLogo">
@@ -143,12 +142,14 @@
 
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Jorge Emilio Calapina Rozo</p>
-            </footer>
+            </asp:ContentPlaceHolder>            
         </div>
+
+
+        <hr />
+        <footer>
+            <p>&copy; <%: DateTime.Now.Year %> - Jorge Emilio Calapina Rozo</p>
+        </footer>
 
     </form>
 </body>

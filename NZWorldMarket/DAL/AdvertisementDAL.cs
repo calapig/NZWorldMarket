@@ -84,5 +84,31 @@ namespace NZWorldMarket.DAL
             return num_updates;
         }
 
+        public DataTable FilterAdvertisement(string advertTypeId, string creationDate, string keyWord)
+        {
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            try
+            {
+                cmd = new SqlCommand("dbo.spNZWM_advertisementQuerySearch", conn);
+                cmd.Parameters.Add(new SqlParameter("@AdvertType", advertTypeId));
+                cmd.Parameters.Add(new SqlParameter("@CreationDate", creationDate));
+                cmd.Parameters.Add(new SqlParameter("@KeyWord", keyWord));
+                cmd.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand = cmd;
+                da.Fill(dt);
+            }
+            catch (Exception x)
+            {
+                throw new Exception("FilterAdvertisementError", x);
+            }
+            finally
+            {
+                cmd.Dispose();
+            }
+
+            return dt;
+        }
     }
 }

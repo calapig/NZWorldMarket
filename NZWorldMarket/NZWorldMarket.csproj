@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="AspNet.ScriptManager.bootstrap, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.bootstrap.4.1.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
     </Reference>
@@ -135,7 +138,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CMCreateManager.aspx" />
+    <Content Include="CreateUser.aspx" />
     <Content Include="ErrorPages\DefaultErrorPage.aspx" />
     <Content Include="ErrorPages\Error401.aspx" />
     <Content Include="ErrorPages\Error403.aspx" />
@@ -206,6 +209,7 @@
     <Content Include="CMUserManagementSystem.aspx" />
     <Content Include="CMUserAdverts.aspx" />
     <Content Include="Welcome.aspx" />
+    <None Include="Properties\PublishProfiles\NZWorldMarket - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -261,12 +265,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="BLL\CartBLL.cs" />
-    <Compile Include="CMCreateManager.aspx.cs">
-      <DependentUpon>CMCreateManager.aspx</DependentUpon>
+    <Compile Include="CreateUser.aspx.cs">
+      <DependentUpon>CreateUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CMCreateManager.aspx.designer.cs">
-      <DependentUpon>CMCreateManager.aspx</DependentUpon>
+    <Compile Include="CreateUser.aspx.designer.cs">
+      <DependentUpon>CreateUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="CommonResources\EmailUtility.cs" />
     <Compile Include="CommonResources\Security.cs" />

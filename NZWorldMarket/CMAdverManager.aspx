@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ContentManager.Master" AutoEventWireup="true" CodeBehind="CMAdverManager.aspx.cs" Inherits="NZWorldMarket.CMAdverManager" %>
 <asp:Content ID="cManagerAdver" ContentPlaceHolderID="MainContent" runat="server">
 
+
     <div class="meContainer" >
         <h1>Advertisement Management System</h1>
     </div>
@@ -22,13 +23,14 @@
                     <label class="input-group-text" for="TxtDate">Date Creation:</label>
                 </div>
                 <asp:TextBox ID="TxtDate" runat="server" ></asp:TextBox>
+                <ajaxToolkit:CalendarExtender runat="server" TargetControlID="TxtDate" Format="d" />
 
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="TxtDate">Key word:</label>
                 </div>
                 <asp:TextBox ID="TxtKeyWord" runat="server" ></asp:TextBox>
 
-                <asp:Button ID="BtnSearch" runat="server" CssClass="btn btn-warning" Text="Search" Width="150px" />
+                <asp:Button ID="BtnSearch" runat="server" CssClass="btn btn-warning" Text="Search" Width="150px" OnClick="BtnSearch_Click" />
 
             </div>
 
@@ -36,10 +38,16 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="DdlItemsAdv">Advertisements:</label>
                 </div>
-                <asp:DropDownList ID="DdlAdverts" runat="server" AutoPostBack="true" DataSourceID="dsDdlAdverts" DataTextField="Title" DataValueField="Id" AppendDataBoundItems="true" OnSelectedIndexChanged="DdlAdverts_SelectedIndexChanged" >
+                <asp:DropDownList ID="DdlAdverts" runat="server" Width="100%" AutoPostBack="true" DataTextField="Title" DataValueField="Id" AppendDataBoundItems="true" OnSelectedIndexChanged="DdlAdverts_SelectedIndexChanged" >
                     <asp:ListItem Value="-1">-- Select --</asp:ListItem>
                 </asp:DropDownList>
-                <asp:SqlDataSource runat="server" ID="dsDdlAdverts" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="SELECT [Id], [Title] FROM [Advertisement] ORDER BY [Title]"></asp:SqlDataSource>
+                <%--<asp:SqlDataSource runat="server" ID="dsDdlAdverts" ConnectionString='<%$ ConnectionStrings:NZWorldMarketConnectionString %>' SelectCommand="spNZWM_advertisementQuerySearch" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="DdlTypeAdver" PropertyName="SelectedValue" Name="AdvertType" Type="String"></asp:ControlParameter>
+                        <asp:ControlParameter ControlID="TxtDate" PropertyName="Text" Name="CreationDate" Type="String"></asp:ControlParameter>
+                        <asp:ControlParameter ControlID="TxtKeyWord" PropertyName="Text" Name="KeyWord" Type="String"></asp:ControlParameter>
+                    </SelectParameters>
+                </asp:SqlDataSource>--%>
             </div>
 
         </div>                    

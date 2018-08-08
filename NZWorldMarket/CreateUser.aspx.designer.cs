@@ -10,222 +10,168 @@
 namespace NZWorldMarket {
     
     
-    public partial class CMAdverManager {
+    public partial class CreateUser {
         
         /// <summary>
-        /// hdfAdverId control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdfAdverId;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// dvAdverts control.
+        /// hdfTp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel dvAdverts;
+        protected global::System.Web.UI.WebControls.HiddenField hdfTp;
         
         /// <summary>
-        /// DdlTypeAdver control.
+        /// mainLogo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlTypeAdver;
+        protected global::System.Web.UI.WebControls.Image mainLogo;
         
         /// <summary>
-        /// dsDdlTypeAdver control.
+        /// lbLegend control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsDdlTypeAdver;
+        protected global::System.Web.UI.WebControls.Label lbLegend;
         
         /// <summary>
-        /// TxtDate control.
+        /// txtFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDate;
+        protected global::System.Web.UI.WebControls.TextBox txtFirstName;
         
         /// <summary>
-        /// TxtKeyWord control.
+        /// rfvFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtKeyWord;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFirstName;
         
         /// <summary>
-        /// BtnSearch control.
+        /// txtLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtLastName;
         
         /// <summary>
-        /// DdlAdverts control.
+        /// rfvLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlAdverts;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLastName;
         
         /// <summary>
-        /// dvConfigAdver control.
+        /// rfvItCustomerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel dvConfigAdver;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvItCustomerName;
         
         /// <summary>
-        /// dvInfoCardAdv control.
+        /// itUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView dvInfoCardAdv;
+        protected global::System.Web.UI.WebControls.TextBox itUserName;
         
         /// <summary>
-        /// dsDvInfoCardAdv control.
+        /// rfvUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsDvInfoCardAdv;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUserName;
         
         /// <summary>
-        /// hdfPhotoId control.
+        /// itUserPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdfPhotoId;
+        protected global::System.Web.UI.WebControls.TextBox itUserPassword;
         
         /// <summary>
-        /// advImage control.
+        /// rfvUserPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image advImage;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvUserPassword;
         
         /// <summary>
-        /// fuPhotoAdv control.
+        /// itConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuPhotoAdv;
+        protected global::System.Web.UI.WebControls.TextBox itConfirmPassword;
         
         /// <summary>
-        /// btnUploadPhotoAdv control.
+        /// rfvConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUploadPhotoAdv;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvConfirmPassword;
         
         /// <summary>
-        /// dvItemsAdv control.
+        /// cvConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView dvItemsAdv;
+        protected global::System.Web.UI.WebControls.CompareValidator cvConfirmPassword;
         
         /// <summary>
-        /// dsDvItemsAdv control.
+        /// btnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsDvItemsAdv;
+        protected global::System.Web.UI.WebControls.Button btnCreate;
         
         /// <summary>
-        /// DdlItemsAdv control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlItemsAdv;
-        
-        /// <summary>
-        /// dsDdlItemsAdv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsDdlItemsAdv;
-        
-        /// <summary>
-        /// chkMainPhoto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkMainPhoto;
-        
-        /// <summary>
-        /// fuAlbum control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuAlbum;
-        
-        /// <summary>
-        /// btnUploadPhoto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUploadPhoto;
-        
-        /// <summary>
-        /// DlPhotos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DlPhotos;
-        
-        /// <summary>
-        /// dsDlPhotos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsDlPhotos;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }
