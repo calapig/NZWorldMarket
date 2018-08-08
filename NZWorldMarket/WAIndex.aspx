@@ -51,7 +51,7 @@
                     <ul class="list-group bg-primary">
                       <li class="list-group-item d-flex justify-content-between align-items-center bg-primary">
                         <b><%# Eval("RegionName") %></b>
-                        <span id="promoLabel" runat="server" class="badge badge-pill badge-warning">-<%# Eval("Discount") %>%</span>
+                        <span id="promoLabel" runat="server" class="badge badge-pill badge-warning">-<%# Eval("Discount") %>% DISCOUNT!!</span>
                       </li>
                     </ul>
                 </div>
@@ -77,7 +77,7 @@
           SelectCommand="SELECT Advertisement.Id, Advertisement.UserId, Advertisement.RegionId, Advertisement.AdvertTypeId, 
         Advertisement.Title, Advertisement.Overview, Advertisement.URL, Advertisement.StyleSheet, Advertisement.PostDeadLine, 
         Advertisement.SearchTags, Advertisement.PhotoId, Advertisement.Active, Advertisement.Creation, Advertisement.Modified, 
-        Advertisement.Promotion, Advertisement.Discount, 
+        ISNULL(Advertisement.Promotion, 0) Promotion, Advertisement.Discount, 
         Region.Name AS RegionName FROM Advertisement INNER JOIN Region ON Advertisement.RegionId = Region.Id 
         WHERE Advertisement.RegionId = (CASE WHEN @RegionId = -1 THEN Advertisement.RegionId ELSE @RegionId END)
         ORDER BY Advertisement.Modified DESC, Advertisement.PostDeadLine">

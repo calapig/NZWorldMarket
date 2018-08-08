@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace NZWorldMarket
@@ -27,6 +28,11 @@ namespace NZWorldMarket
             {
                 Button btnOrderNow = (Button)e.Item.Controls[5];
                 btnOrderNow.Visible = false;
+            }
+
+            if (!Boolean.Parse(drv.Row["Promotion"].ToString()))
+            {
+                ((HtmlControl)e.Item.FindControl("promoLabel")).Visible = false;
             }
         }
 
