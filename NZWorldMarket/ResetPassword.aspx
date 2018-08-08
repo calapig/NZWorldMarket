@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateUser.aspx.cs" Inherits="NZWorldMarket.CreateUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ResetPassword.aspx.cs" Inherits="NZWorldMarket.ResetPassword" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Create User</title>
+    <title>Reset Password</title>
     <webopt:bundlereference runat="server" path="~/Content/css" />
 
     <script src="Scripts/myValidate.js" ></script>
@@ -88,7 +88,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
+        
         <div class="container-fluid">
             
             <asp:HiddenField ID="hdfTp" runat="server" />
@@ -112,18 +112,6 @@
 
                             <fieldset>
                             <legend><asp:Label ID="lbLegend" runat="server" ></asp:Label></legend>
-
-                            <div class="form-group">
-                                <label for="txtFirstName">First name</label>
-                                <asp:TextBox ID="txtFirstName" runat="server" class="form-control" placeholder="First Name" ValidationGroup="val" ></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvFirstName" runat="server" CssClass="text-danger" ControlToValidate="txtFirstName" ErrorMessage="Please provide your first name." ValidationGroup="val" ></asp:RequiredFieldValidator>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="txtLastName">Last name</label>
-                                <asp:TextBox ID="txtLastName" runat="server" class="form-control" placeholder="Last Name" ValidationGroup="val" ></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvLastName" runat="server" CssClass="text-danger" ControlToValidate="txtLastName" ErrorMessage="Please provide your last name." ValidationGroup="val" ></asp:RequiredFieldValidator>
-                            </div>
 
                             <div class="form-group">
                                 <label for="itCustomerName">Email address<asp:RegularExpressionValidator ID="rfvItCustomerName" runat="server" ErrorMessage=" (Incorrect format)" CssClass="text-danger" ControlToValidate="itUserName" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="val" ></asp:RegularExpressionValidator></label>
@@ -150,7 +138,7 @@
                                 <br />
                             </div>
                             
-                            <asp:Button ID="btnCreate" runat="server" CssClass="btn btn-outline-success" Text="Create" OnClick="btnCreate_Click" ValidationGroup="val"  />
+                            <asp:Button ID="btnReset" runat="server" CssClass="btn btn-outline-success" Text="Reset" OnClick="btnReset_Click" ValidationGroup="val"  />
                             <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-outline-danger" Text="Cancel" OnClick="btnCancel_Click"/>
 
                             </fieldset>

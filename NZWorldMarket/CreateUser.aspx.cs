@@ -20,8 +20,14 @@ namespace NZWorldMarket
 
             }
 
+            LoadPrerequisites();
+        }
+
+        private void LoadPrerequisites()
+        {
             string type = Request.QueryString["tp"] ?? string.Empty;
-            switch (type) {
+            switch (type)
+            {
                 case "CM":
                     Title = "Welcome to NZworldMarket.co staff";
                     lbLegend.Text = "New Staff Member";

@@ -144,6 +144,7 @@
     <Content Include="ErrorPages\Error403.aspx" />
     <Content Include="ErrorPages\Error404.aspx" />
     <Content Include="ErrorPages\Error500.aspx" />
+    <Content Include="ResetPassword.aspx" />
     <Content Include="Scripts\myValidate.js" />
     <Content Include="WAAbout.aspx" />
     <Content Include="WAContact.aspx" />
@@ -208,6 +209,9 @@
     <Content Include="CMIndex.aspx" />
     <Content Include="CMUserManagementSystem.aspx" />
     <Content Include="CMUserAdverts.aspx" />
+    <Content Include="CMCustomerManagSystem.aspx" />
+    <Content Include="CMUserEdit.aspx" />
+    <Content Include="CMUserCreate.aspx" />
     <Content Include="Welcome.aspx" />
     <None Include="Properties\PublishProfiles\NZWorldMarket - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -310,6 +314,13 @@
     </Compile>
     <Compile Include="ErrorPages\Error500.aspx.designer.cs">
       <DependentUpon>Error500.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="WAAbout.aspx.cs">
       <DependentUpon>WAAbout.aspx</DependentUpon>
@@ -428,6 +439,27 @@
     </Compile>
     <Compile Include="CMUserAdverts.aspx.designer.cs">
       <DependentUpon>CMUserAdverts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMCustomerManagSystem.aspx.cs">
+      <DependentUpon>CMCustomerManagSystem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMCustomerManagSystem.aspx.designer.cs">
+      <DependentUpon>CMCustomerManagSystem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMUserEdit.aspx.cs">
+      <DependentUpon>CMUserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMUserEdit.aspx.designer.cs">
+      <DependentUpon>CMUserEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMUserCreate.aspx.cs">
+      <DependentUpon>CMUserCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMUserCreate.aspx.designer.cs">
+      <DependentUpon>CMUserCreate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Welcome.aspx.cs">
       <DependentUpon>Welcome.aspx</DependentUpon>

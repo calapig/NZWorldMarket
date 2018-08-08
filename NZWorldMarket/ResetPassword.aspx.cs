@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace NZWorldMarket
 {
-    public partial class CMUserEdit : System.Web.UI.Page
+    public partial class ResetPassword : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,11 +30,11 @@ namespace NZWorldMarket
             {
                 case "CM":
                     Title = "Welcome to NZworldMarket.co staff";
-                    lbLegend.Text = "New Staff Member";
+                    lbLegend.Text = "Reset Password Staff Member";
                     hdfTp.Value = "CM";
                     break;
                 case "WA":
-                    lbLegend.Text = "New Customer";
+                    lbLegend.Text = "Reset Password New Customer";
                     Title = "Welcome dear customer to NZworldMarket.co";
                     hdfTp.Value = "WA";
                     break;
@@ -42,33 +42,25 @@ namespace NZWorldMarket
                     Response.Redirect("Welcome.aspx");
                     break;
             }
-
-            hffUserId.Value = Session["UserId"].ToString();
-
-            long userId = long.Parse(hffUserId.Value);
-            UserDAL user = new UserDAL();
-            DataTable userInfo = user.GetUser(userId);
-            itUserName.Text = userInfo.Rows[0]["Name"].ToString();
         }
 
-        protected void btnUpdate_Click(object sender, EventArgs e)
+        protected void btnReset_Click(object sender, EventArgs e)
         {
-            long userId = long.Parse(hffUserId.Value);
             UserDAL user = new UserDAL();
-            string userName = itUserName.Text;
-            user.UpdateField(userId, "Name", userName);
 
             string password = itUserPassword.Text;
             if (!password.Equals(string.Empty))
             {
                 using (SHA512 algor = SHA512.Create())
                 {
-                    DataTable userInfo = user.GetUser(userId);
+                    string userName = itUserName.Text;
+                    string role = hdfTp.Value;
+                    DataTable userInfo = user.GetUser(userName, role);
                     string salt = userInfo.Rows[0]["Salt"].ToString();
-                    
+                    long userId = long.Parse(userInfo.Rows[0]["Id"].ToString());
+
                     string passwordsalted = string.Concat(password, salt);
                     string hash = Security.GetHash(algor, passwordsalted);
-                    string role = hdfTp.Value;
 
                     Console.WriteLine("The SHA512 hash of " + password + " is: " + hash + ".");
 
@@ -76,16 +68,16 @@ namespace NZWorldMarket
 
                     if (rows_Affected > 0)
                     {
-                        Response.Redirect("CMCustomerManagSystem.aspx");
+                        Response.Redirect("Welcome.aspx");
                     }
                 }
             }
-            
+
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("CMCustomerManagSystem.aspx");
+            Response.Redirect("Welcome.aspx");
         }
     }
 }
