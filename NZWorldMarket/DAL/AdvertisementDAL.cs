@@ -91,7 +91,7 @@ namespace NZWorldMarket.DAL
             DataTable dt = new DataTable();
             try
             {
-                cmd = new SqlCommand("dbo.spNZWM_advertisementQuerySearch", conn);
+                cmd = new SqlCommand("dbo.spNZWM_advertisementExtensiveSearch", conn);
                 cmd.Parameters.Add(new SqlParameter("@AdvertType", advertTypeId));
                 cmd.Parameters.Add(new SqlParameter("@CreationDate", creationDate));
                 cmd.Parameters.Add(new SqlParameter("@KeyWord", keyWord));
